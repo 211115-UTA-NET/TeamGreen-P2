@@ -1,0 +1,19 @@
+﻿body
+{
+
+}
+input:focus::placeholder{
+    color: transparent;
+}
+
+::placeholder{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: grey;
+}
+
+#logo {
+    position:absolute;
+    left: 2;
+    top: 2;
+
+}

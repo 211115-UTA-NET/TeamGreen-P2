@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{522DF804-07F4-4A6B-866A-C5CA222D1A36}"
+	ProjectSection(SolutionItems) = preProject
+		CustomerSignUp.html = CustomerSignUp.html
+		LoginPage.html = LoginPage.html
+		OwnerSignUp.html = OwnerSignUp.html
+		ProfilePage.html = ProfilePage.html
+		Script1.js = Script1.js
+		StyleSheet1.css = StyleSheet1.css
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {89E5DD15-AF28-49FA-86FE-50DBA8B56317}
+	EndGlobalSection
+EndGlobal
