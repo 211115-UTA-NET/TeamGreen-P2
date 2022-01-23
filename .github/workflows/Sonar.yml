@@ -1,4 +1,5 @@
-name: Build
+name: SonarAnalysis
+
 
 on:
   push:
