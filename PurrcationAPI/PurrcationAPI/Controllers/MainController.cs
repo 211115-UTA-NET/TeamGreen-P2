@@ -20,6 +20,40 @@ namespace PurrcationAPI.Controllers
             
         }
 
+        [HttpGet("/GetAllUnits")]
+        public ContentResult GetItems()
+
+        {
+            SqlData repository = new SqlData(getConnectionString());
+             
+            List<Unit> result = repository.GetAllUnits();
+            var json = Newtonsoft.Json.JsonConvert.SerializeObject(result);
+
+            return new ContentResult()
+            {
+                StatusCode = 200,
+                ContentType = "application/json",
+                Content = json
+            };
+        }
+        [HttpPost("/signup")]
+
+        [HttpGet("/GetAllItemsMYDB")]
+        public ContentResult GetItemsMYDB()
+
+        {
+            SqlData repository = new SqlData(getConnectionString());
+
+            List<Unit> result = repository.GetAllUnits();
+            var json = Newtonsoft.Json.JsonConvert.SerializeObject(result);
+
+            return new ContentResult()
+            {
+                StatusCode = 200,
+                ContentType = "application/json",
+                Content = json
+            };
+        }
         [HttpPost("/signup")]
 
         public async Task<IActionResult> AddUser(List<User> usr)

@@ -58,3 +58,9 @@ C:\P2\PurrcationAPI\PurrcationAPI\obj\Release\net6.0\PurrcationAPI.dll
 C:\P2\PurrcationAPI\PurrcationAPI\obj\Release\net6.0\ref\PurrcationAPI.dll
 C:\P2\PurrcationAPI\PurrcationAPI\obj\Release\net6.0\PurrcationAPI.pdb
 C:\P2\PurrcationAPI\PurrcationAPI\obj\Release\net6.0\PurrcationAPI.genruntimeconfig.cache
+C:\P2\PurrcationAPI\PurrcationAPI\bin\Release\net6.0\Humanizer.dll
+C:\P2\PurrcationAPI\PurrcationAPI\bin\Release\net6.0\Microsoft.EntityFrameworkCore.dll
+C:\P2\PurrcationAPI\PurrcationAPI\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\P2\PurrcationAPI\PurrcationAPI\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\P2\PurrcationAPI\PurrcationAPI\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\P2\PurrcationAPI\PurrcationAPI\bin\Release\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll

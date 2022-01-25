@@ -19,6 +19,45 @@ namespace PurrcationAPI.Models.DataStorage
             this.connectionString = connectionString;
         }
 
+        public List<Unit> GetAllUnits()
+        {
+            List<Unit> result = new();
+
+            using SqlConnection connection = new(connectionString);
+            connection.Open();
+
+            using SqlCommand cmd = new(
+                @"Select *
+                from Units",
+                connection);
+
+            using SqlDataAdapter adapter = new(cmd);
+            DataSet dataSet = new();
+            adapter.Fill(dataSet);
+
+            connection.Close();
+
+            foreach (DataRow row in dataSet.Tables[0].Rows)
+            {
+
+                int Unit_Type_ID = Convert.ToInt32(row["Unit_Type_ID"]);
+                int Owner_ID = Convert.ToInt32(row["Owner_ID"].ToString());
+                string? Address = row["Address"].ToString();
+                string? City = row["City"].ToString();
+                string? State = row["State"].ToString();
+                string? Unit_Description = row["Unit_Description"].ToString();
+                string? Price_Night_Cat = row["Price_Night_Cat"].ToString();
+                int Zip_Code = Convert.ToInt32(row["Zip_Code"]);
+                int Max_Guests = Convert.ToInt32(row["Max_Guests"]);
+
+
+                result.Add(new(Unit_Type_ID, Owner_ID, Address, City, State, Unit_Description, Price_Night_Cat, Zip_Code, Max_Guests));
+
+            }
+
+            return result;
+        }
+
         //This method will add a new user to the database 
         public void AddNewUser(Account usr)
         {
