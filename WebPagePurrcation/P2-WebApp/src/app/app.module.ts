@@ -7,11 +7,21 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { LoginComponent } from './login/login.component';
+import { NewUserComponent } from './new-user/new-user.component';
+import { BrowseComponent } from './browse/browse.component';
+import { UnitDetailsComponent } from './unit-details/unit-details.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UnitsComponent
+    UnitsComponent,
+    LoginComponent,
+    NewUserComponent,
+    BrowseComponent,
+    UnitDetailsComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
