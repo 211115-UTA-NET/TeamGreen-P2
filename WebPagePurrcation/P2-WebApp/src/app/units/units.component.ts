@@ -10,6 +10,7 @@ import { Unit } from '../unit';
 export class UnitsComponent implements OnInit {
 
   units: Unit[] = [];
+  num: number = 0;
 
   constructor(private unitService: UnitService) { }
 
@@ -19,6 +20,10 @@ export class UnitsComponent implements OnInit {
 
   getUnits(): void {
     this.unitService.getUnits().subscribe(units => this.units = units);
+  }
+
+  getNumber(): void {
+    this.num = 10101;
   }
 
 }
