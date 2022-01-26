@@ -12,6 +12,8 @@ import { NewUserComponent } from './new-user/new-user.component';
 import { BrowseComponent } from './browse/browse.component';
 import { UnitDetailsComponent } from './unit-details/unit-details.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { CommentsComponent } from './comments/comments.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,12 +23,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     NewUserComponent,
     BrowseComponent,
     UnitDetailsComponent,
-    DashboardComponent
+    DashboardComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule/**,
+    HttpClientModule,
+    FormsModule/**,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false })*/
   ],
   providers: [],
