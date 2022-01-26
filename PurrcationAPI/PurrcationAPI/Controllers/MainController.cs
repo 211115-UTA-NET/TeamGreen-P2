@@ -67,15 +67,34 @@ namespace PurrcationAPI.Controllers
                 Content = json
             };
         }
-        [HttpGet("VerifyCredentials")]
-        public IActionResult VerifyCredentials([FromQuery] string username)
+        [HttpGet("/VerifyCredentials/")]
+        public ActionResult<bool> VerifyCredentials([FromQuery(Name = "username")] string username)
         {
+                Account account = new Account();
+                bool ans = account.checkIfUsrExist(username, getConnectionString());
+                Response.Headers.Add("Access-Control-Allow-Origin", "*");
+            if (ans) {
+                Response.StatusCode(200);
+                return true;
+            } else {
+                Response.StatusCode(105);
+                return false;
+            }
 
-            Account account = new Account();
-           bool ans = account.checkIfUsrExist(username, getConnectionString());
-            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+                /*if (ans)
+                {
+                    return new ContentResult()
+                    {
+                        //StatusCode = 200,
+                    };
+                }
+                else
+                {
+                    return new ContentResult()
+                    {
+                        StatusCode = 501,
 
-<<<<<<< HEAD
+
             //   SqlData repository = new SqlData(getConnectionString());
             //   List<Unit> result = repository.GetUnitById(id);
             //  var json = Newtonsoft.Json.JsonConvert.SerializeObject(result);
@@ -84,9 +103,9 @@ namespace PurrcationAPI.Controllers
 	    Response.Headers.Add("Access-Control-Allow-Origin", "*");
 
             return new ContentResult()
-=======
+
             if (ans)
->>>>>>> 6fd5ac779099fd491712f74d42299064f794aa57
+
             {
                 return new ContentResult()
                 {
@@ -101,6 +120,10 @@ namespace PurrcationAPI.Controllers
                   
                 };
             }
+
+                    };
+                }  */       
+
         }
         [HttpPost("/signup")]
         public async Task<IActionResult> AddUser(List<User> usr)
