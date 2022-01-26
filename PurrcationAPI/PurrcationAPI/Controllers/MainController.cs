@@ -67,29 +67,28 @@ namespace PurrcationAPI.Controllers
                 Content = json
             };
         }
-        [HttpGet("VerifyCredentials")]
-        public IActionResult VerifyCredentials([FromQuery] string username)
+        [HttpGet("/VerifyCredentials/")]
+        public IActionResult VerifyCredentials([FromQuery(Name = "username")] string username)
         {
+                Account account = new Account();
+                bool ans = account.checkIfUsrExist(username, getConnectionString());
+               // Response.Headers.Add("Access-Control-Allow-Origin", "*");
 
-            Account account = new Account();
-           bool ans = account.checkIfUsrExist(username, getConnectionString());
-            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+                if (ans)
+                {
+                    return new ContentResult()
+                    {
+                        StatusCode = 200,
+                    };
+                }
+                else
+                {
+                    return new ContentResult()
+                    {
+                        StatusCode = 501,
 
-            if (ans)
-            {
-                return new ContentResult()
-                {
-                    StatusCode = 200,               
-                };
-            }
-            else
-            {
-                return new ContentResult()
-                {
-                    StatusCode = 501,
-                  
-                };
-            }
+                    };
+                }         
         }
         [HttpPost("/signup")]
         public async Task<IActionResult> AddUser(List<User> usr)
