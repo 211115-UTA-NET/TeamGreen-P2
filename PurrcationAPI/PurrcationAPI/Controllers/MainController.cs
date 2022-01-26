@@ -71,7 +71,9 @@ namespace PurrcationAPI.Controllers
             //   SqlData repository = new SqlData(getConnectionString());
             //   List<Unit> result = repository.GetUnitById(id);
             //  var json = Newtonsoft.Json.JsonConvert.SerializeObject(result);
-              var json = Newtonsoft.Json.JsonConvert.SerializeObject("true");
+              var json = Newtonsoft.Json.JsonConvert.SerializeObject(true);
+
+	    Response.Headers.Add("Access-Control-Allow-Origin", "*");
 
             return new ContentResult()
             {
