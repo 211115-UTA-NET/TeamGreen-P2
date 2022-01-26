@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PurrcationAPI.Models.DataStorage;
 using PurrcationAPI.Models.Logic;
+using System.ComponentModel.DataAnnotations;
 
 namespace PurrcationAPI.Controllers
 {//
@@ -66,12 +67,12 @@ namespace PurrcationAPI.Controllers
                 Content = json
             };
         }
-        [HttpGet("/VerifyCredentials/{Id}")]
-
-        public ContentResult VerifyCredentials(string id)
+        [HttpGet("VerifyCredentials")]
+        public IActionResult VerifyCredentials([FromQuery] string username)
         {
+
             Account account = new Account();
-           bool ans = account.checkIfUsrExist(id, getConnectionString());
+           bool ans = account.checkIfUsrExist(username, getConnectionString());
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
 
 <<<<<<< HEAD
