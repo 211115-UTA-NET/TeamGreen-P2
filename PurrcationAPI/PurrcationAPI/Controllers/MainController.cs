@@ -29,8 +29,18 @@ namespace PurrcationAPI.Controllers
             List<Unit> result = repository.GetAllUnits();
             var json = Newtonsoft.Json.JsonConvert.SerializeObject(result);
 
+
+            // //header('Access-Control-Allow-Origin: *');
+            //  header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method, Authorization");
+            // header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE, PATCH");
+            // HttpContext.Response.AppendHeader("your_header_name", "your_header_value");
+
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+
+           
             return new ContentResult()
             {
+                
                 StatusCode = 200,
                 ContentType = "application/json",
                 Content = json
