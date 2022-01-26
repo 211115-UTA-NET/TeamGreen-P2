@@ -38,13 +38,12 @@ namespace PurrcationAPI.Controllers
         }
         [HttpPost("/signup")]
 
-        [HttpGet("/GetAllItemsMYDB")]
-        public ContentResult GetItemsMYDB()
-
+        [HttpGet("/GetUnitById/{Id}")]
+        public ContentResult GetUnitById(string id)
         {
-            SqlData repository = new SqlData(getConnectionString());
 
-            List<Unit> result = repository.GetAllUnits();
+            SqlData repository = new SqlData(getConnectionString());
+            List<Unit> result = repository.GetUnitById(id);
             var json = Newtonsoft.Json.JsonConvert.SerializeObject(result);
 
             return new ContentResult()
@@ -54,8 +53,24 @@ namespace PurrcationAPI.Controllers
                 Content = json
             };
         }
-        [HttpPost("/signup")]
+        [HttpGet("/VerifyCredentials/{Id}")]
 
+        public ContentResult VerifyCredentials(string id)
+        {
+
+            //   SqlData repository = new SqlData(getConnectionString());
+            //   List<Unit> result = repository.GetUnitById(id);
+            //  var json = Newtonsoft.Json.JsonConvert.SerializeObject(result);
+              var json = Newtonsoft.Json.JsonConvert.SerializeObject("true");
+
+            return new ContentResult()
+            {
+                StatusCode = 200,
+                ContentType = "application/json",
+                Content = json
+            };
+        }
+        [HttpPost("/signup")]
         public async Task<IActionResult> AddUser(List<User> usr)
         {
             Account newUsr = new Account(usr[0].Fname, usr[0].Lname, usr[0].Password, usr[0].Email, usr[0].UserType);
