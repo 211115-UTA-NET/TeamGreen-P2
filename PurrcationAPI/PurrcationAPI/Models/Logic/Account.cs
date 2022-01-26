@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using PurrcationAPI.Models.DataStorage;
 
 namespace PurrcationAPI.Models.Logic
 {
@@ -37,13 +38,12 @@ namespace PurrcationAPI.Models.Logic
         {
         }
 
-        public bool checkIfUsrExist()
+        public bool checkIfUsrExist(string userID, string connectionString)
         {
             //check UserId with DB data to see if user exist.
             //return true if yes or return false
-
-
-            return true;
+            SqlData repository = new SqlData(connectionString);
+            return  repository.VerifyCredentials(userID);
         }
 
         public int IdGenerator()

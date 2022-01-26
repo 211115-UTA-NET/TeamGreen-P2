@@ -57,6 +57,7 @@ namespace PurrcationAPI.Models.DataStorage
 
             return result;
         }
+
         public List<Unit> GetUnitById(string Id)
         {
             List<Unit> result = new();
@@ -96,6 +97,46 @@ namespace PurrcationAPI.Models.DataStorage
 
             }
 
+            return result;
+        }
+        public Boolean VerifyCredentials(string Email)
+        {
+            Boolean result = false;
+           // List<User> result = new();
+
+
+            using SqlConnection connection = new(connectionString);
+            connection.Open();
+
+            using SqlCommand cmd = new(
+               @"Select *
+                from Users
+                where Email = @Email",
+               connection);
+
+            cmd.Parameters.AddWithValue("@Email", Email);
+            using SqlDataAdapter adapter = new(cmd);
+            try
+            {
+                DataSet dataSet = new();
+                adapter.Fill(dataSet);
+
+                foreach (DataRow row in dataSet.Tables[0].Rows)
+                {
+                    result= true;
+                    //string? Emails = row["Email"].ToString();
+
+                }
+            }
+            catch (Exception e)
+            {
+                //result = false;
+            }
+            finally
+            {
+                connection.Close();
+
+            }          
             return result;
         }
         //This method will add a new user to the database 
