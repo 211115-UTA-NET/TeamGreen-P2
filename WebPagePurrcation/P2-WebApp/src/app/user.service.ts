@@ -8,7 +8,7 @@ import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/comm
 })
 export class UserService {
 
-  private verifyUrl = 'https://localhost:7112';//'https://purrcationapi.azurewebsites.net/VerifyCredentials/3';
+  private verifyUrl = 'https://purrcationapi.azurewebsites.net/VerifyCredentials/3';
 
   httpOptions = {
     headers: new HttpHeaders({
