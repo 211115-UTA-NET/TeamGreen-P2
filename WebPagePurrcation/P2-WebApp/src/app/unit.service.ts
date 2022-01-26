@@ -10,7 +10,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class UnitService {
 
-  private unitsUrl = 'https://purrcationapi.azurewebsites.net/units';
+  private unitsUrl = 'https://purrcationapi.azurewebsites.net/GetAllUnits';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -18,8 +18,8 @@ export class UnitService {
 
   constructor(private http: HttpClient) { }
 
-  getUnits(): Observable<Unit[]> {
-    return this.http.get<Unit[]>(this.unitsUrl);
+  getUnits(): Observable<Unit> {
+    return this.http.get<Unit>(this.unitsUrl);
   }
 
   //getUnit(id: number): Observable<Unit> {

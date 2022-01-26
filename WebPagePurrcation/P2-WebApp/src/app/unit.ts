@@ -1,5 +1,5 @@
 export interface Unit {
-  Unit_ID: number;
+  //Unit_ID: number;
   Unit_Type_ID: number;
   Owner_ID: number;
   Address: string;

@@ -10,20 +10,17 @@ import { Unit } from '../unit';
 export class UnitsComponent implements OnInit {
 
   units: Unit[] = [];
-  num: number = 0;
+  unit: any;
 
   constructor(private unitService: UnitService) { }
 
   ngOnInit(): void {
-    //this.getUnits();
+    this.getUnits();
   }
 
   getUnits(): void {
-    this.unitService.getUnits().subscribe(units => this.units = units);
+    console.log("4");
+    this.unitService.getUnits().subscribe(unit => this.unit = unit);
+    console.log(this.unit);
   }
-
-  getNumber(): void {
-    this.num = 10101;
-  }
-
 }

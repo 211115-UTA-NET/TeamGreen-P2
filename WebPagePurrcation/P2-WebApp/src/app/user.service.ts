@@ -21,8 +21,8 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  verify(email: string, password: string): Observable<HttpResponse<any>> {
+  verify(email: string, password: string): Observable<HttpResponse<boolean>> {
     console.log("3");
-    return this.http.get<any>(this.verifyUrl, {headers: {'email': email, 'password': password}, observe: 'response'});
+    return this.http.get<boolean>(this.verifyUrl, {headers: {'email': email, 'password': password}, observe: 'response'});
   }
 }

@@ -1,6 +1,6 @@
-<div>
-  <p>Help</p>
-  <button (click) = "getNumber()">Get Number?</button>
-  <div>{{num}}</div>
-</div>
-
+<h2>Browse Units</h2>
+<ul class="units">
+  <li *ngFor = "let unit of units">
+    <a routerLink = "details/{{unit.Address}}"></a>
+  </li>
+</ul>

@@ -56,6 +56,9 @@ namespace PurrcationAPI.Controllers
             List<Unit> result = repository.GetUnitById(id);
             var json = Newtonsoft.Json.JsonConvert.SerializeObject(result);
 
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+
+
             return new ContentResult()
             {
                 StatusCode = 200,
@@ -67,7 +70,11 @@ namespace PurrcationAPI.Controllers
 
         public ContentResult VerifyCredentials(string id)
         {
+            Account account = new Account();
+           bool ans = account.checkIfUsrExist(id, getConnectionString());
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
 
+<<<<<<< HEAD
             //   SqlData repository = new SqlData(getConnectionString());
             //   List<Unit> result = repository.GetUnitById(id);
             //  var json = Newtonsoft.Json.JsonConvert.SerializeObject(result);
@@ -76,11 +83,23 @@ namespace PurrcationAPI.Controllers
 	    Response.Headers.Add("Access-Control-Allow-Origin", "*");
 
             return new ContentResult()
+=======
+            if (ans)
+>>>>>>> 6fd5ac779099fd491712f74d42299064f794aa57
             {
-                StatusCode = 200,
-                ContentType = "application/json",
-                Content = json
-            };
+                return new ContentResult()
+                {
+                    StatusCode = 200,               
+                };
+            }
+            else
+            {
+                return new ContentResult()
+                {
+                    StatusCode = 501,
+                  
+                };
+            }
         }
         [HttpPost("/signup")]
         public async Task<IActionResult> AddUser(List<User> usr)
