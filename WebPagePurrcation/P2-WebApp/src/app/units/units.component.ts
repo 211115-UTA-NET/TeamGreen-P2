@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UnitService } from '../unit.service';
 import { Unit } from '../unit';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-units',
@@ -10,7 +11,8 @@ import { Unit } from '../unit';
 export class UnitsComponent implements OnInit {
 
   units: Unit[] = [];
-  unit: any;
+  unit: HttpResponse<Unit[]> | undefined;
+  seeUnits: boolean = false;
 
   constructor(private unitService: UnitService) { }
 
@@ -19,8 +21,12 @@ export class UnitsComponent implements OnInit {
   }
 
   getUnits(): void {
-    console.log("4");
     this.unitService.getUnits().subscribe(unit => this.unit = unit);
     console.log(this.unit);
+  }
+
+  showUnits(): void {
+    this.getUnits();
+    this.seeUnits = true;
   }
 }

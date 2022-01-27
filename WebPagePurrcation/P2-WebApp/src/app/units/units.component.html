@@ -1,6 +1,12 @@
 <h2>Browse Units</h2>
-<ul class="units">
-  <li *ngFor = "let unit of units">
-    <a routerLink = "details/{{unit.Address}}"></a>
-  </li>
-</ul>
+<button (click)="showUnits()">View Units</button>
+<div *ngIf="seeUnits; then unitsBlock;"></div>
+<ng-template #unitsBlock>
+  <ul class="units">
+    <li *ngFor = "let unit of units">
+      <a routerLink = "details/{{unit.Address}}"></a>
+      <span class = "tile">{{unit.Address}}</span> {{unit.Unit_Desciption}}
+    </li>
+  </ul>
+</ng-template>
+

@@ -1,8 +1,9 @@
 import { Component, Output, OnInit, EventEmitter, Input } from '@angular/core';
 import { UserService } from '../user.service';
 import { Observable, of } from 'rxjs';
-import { HttpResponse } from '@angular/common/http';
+import { HttpResponse, HttpEvent } from '@angular/common/http';
 import { UnitsComponent } from '../units/units.component'
+import { User } from '../user'
 
 @Component({
   selector: 'app-login',
@@ -11,16 +12,21 @@ import { UnitsComponent } from '../units/units.component'
 })
 export class LoginComponent {
 
-  @Output() username = new EventEmitter<string>();
+  @Output() email = new EventEmitter<string>();
   @Output() password = new EventEmitter<string>();
-  verifiedHttp: HttpResponse<boolean> = new HttpResponse<boolean>();
-  verified: boolean | null | undefined;
+  user: HttpEvent<ArrayBuffer> | undefined;
+  verified: boolean | undefined;
 
   constructor(private userService: UserService ) { }
   
-  verify(username: string, password: string): void {
-    this.userService.verify(username, password).subscribe(valid => this.verifiedHttp = valid);
-    this.verified = this.verifiedHttp.body;
+  verify(email: string, password: string): void {
+    this.userService.verify(email, password).subscribe(user => this.user = user);
+    /**if (this.user?.body?.Email == email) {
+      this.verified = true;
+    } else {
+      this.verified = false;
+    }*/
   }
+
 
 }

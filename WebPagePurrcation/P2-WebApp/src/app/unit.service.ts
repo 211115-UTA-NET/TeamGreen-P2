@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Unit } from './unit';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
@@ -10,7 +10,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class UnitService {
 
-  private unitsUrl = 'https://purrcationapi.azurewebsites.net/GetAllUnits';
+  private unitsUrl = 'https://purrcationapi.azurewebsites.net/getallunits';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -18,8 +18,8 @@ export class UnitService {
 
   constructor(private http: HttpClient) { }
 
-  getUnits(): Observable<Unit> {
-    return this.http.get<Unit>(this.unitsUrl);
+  getUnits(): Observable<HttpResponse<Unit[]>> {
+    return this.http.get<Unit[]>(this.unitsUrl, {observe: 'response'});
   }
 
   //getUnit(id: number): Observable<Unit> {
