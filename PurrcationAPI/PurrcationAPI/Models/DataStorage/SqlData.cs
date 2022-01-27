@@ -99,6 +99,47 @@ namespace PurrcationAPI.Models.DataStorage
 
             return result;
         }
+
+
+        public List<Comments> GetCommentsById(string Id)
+        {
+            List<Comments> result = new();
+
+            using SqlConnection connection = new(connectionString);
+            connection.Open();
+
+            using SqlCommand cmd = new(
+                @"Select *
+                from Comments
+                where Unit_ID = @Id",
+                connection);
+
+            cmd.Parameters.AddWithValue("@Id", Id);
+
+            using SqlDataAdapter adapter = new(cmd);
+            DataSet dataSet = new();
+            adapter.Fill(dataSet);
+
+            connection.Close();
+
+            foreach (DataRow row in dataSet.Tables[0].Rows)
+            {
+
+                string Unit_ID = row["Unit_ID"].ToString();
+                string? Guest_ID = row["Guest_ID"].ToString();
+                string? Review = row["Review"].ToString();
+                string? Rating = row["Rating"].ToString();
+                string? Post_Date_Time = row["Post_Date_Time"].ToString();
+
+
+
+
+                result.Add(new(Unit_ID, Guest_ID, Review, Rating, Post_Date_Time));
+
+            }
+
+            return result;
+        }
         public List<Account> VerifyCredentials(string Email)
         {
             List<Account> result = new();

@@ -21,6 +21,25 @@ namespace PurrcationAPI.Controllers
             
         }
 
+        [HttpGet("/GetCommentById/{Id}")]
+        public ContentResult GetCommentById(string id)
+        {
+
+            SqlData repository = new SqlData(getConnectionString());
+            List<Comments> result = repository.GetCommentsById(id);
+            var json = Newtonsoft.Json.JsonConvert.SerializeObject(result);
+
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+
+
+            return new ContentResult()
+            {
+                StatusCode = 200,
+                ContentType = "application/json",
+                Content = json
+            };
+        }
+
         [HttpGet("/GetAllUnits")]
         public ContentResult GetItems()
 
