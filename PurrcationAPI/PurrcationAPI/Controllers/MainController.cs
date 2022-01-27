@@ -37,8 +37,8 @@ namespace PurrcationAPI.Controllers
             // HttpContext.Response.AppendHeader("your_header_name", "your_header_value");
 
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
+       
 
-           
             return new ContentResult()
             {
                 
@@ -67,13 +67,16 @@ namespace PurrcationAPI.Controllers
                 Content = json
             };
         }
-        [HttpGet("/VerifyCredentials/")]
-        public ActionResult VerifyCredentials([FromQuery(Name = "username")] string username)
-        {
+        // [HttpGet("/VerifyCredentials/")]
+        // public ActionResult VerifyCredentials([FromQuery(Name = "username")] string username)
+        [HttpGet("/VerifyCredentials/{Id}")]
+        public ContentResult VerifyCredentials(string id)
+        
+            {
                 Account account = new Account();
             // bool ans = account.checkIfUsrExist(username, getConnectionString());
             SqlData repository = new SqlData(getConnectionString());
-            List<Account> result = repository.VerifyCredentials(username);
+            List<Account> result = repository.VerifyCredentials(id);
             var json = Newtonsoft.Json.JsonConvert.SerializeObject(result);
 
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
