@@ -10,14 +10,25 @@ import { CommentService } from '../comment.service';
 })
 export class CommentsComponent implements OnInit {
 
-  constructor(commentService: CommentService) { }
-
-  getCommentsForUnit(unit_id: number): void {
-    //this.commentService.getComments(unit_id);  
-  }
+  commentService: CommentService;
+  seeComments: boolean = false;
+  comments: Comment[] = [];
+  
+  constructor(commentService: CommentService) {
+    this.commentService = commentService;
+   }
 
   ngOnInit(): void {
 
+  }
+
+  getCommentsForUnit(unit_id: number): void {
+    this.commentService.getComments(unit_id);  
+  }
+
+  showComments(/**unit_id: number*/) {
+    //this.getCommentsForUnit(unit_id);
+    this.seeComments = true;
   }
 
   

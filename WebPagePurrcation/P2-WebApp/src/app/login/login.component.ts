@@ -14,18 +14,19 @@ export class LoginComponent {
 
   @Output() email = new EventEmitter<string>();
   @Output() password = new EventEmitter<string>();
-  user: HttpEvent<ArrayBuffer> | undefined;
+  user: HttpResponse<User> | undefined;
   verified: boolean | undefined;
 
   constructor(private userService: UserService ) { }
   
   verify(email: string, password: string): void {
     this.userService.verify(email, password).subscribe(user => this.user = user);
-    /**if (this.user?.body?.Email == email) {
+    console.log(this.user?.body?.Email);
+    if (this.user?.body?.Email == email) {
       this.verified = true;
     } else {
       this.verified = false;
-    }*/
+    }
   }
 
 

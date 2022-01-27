@@ -17,12 +17,12 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  verify(email: string, password: string): Observable<HttpEvent<ArrayBuffer>> {
+  verify(email: string, password: string): Observable<HttpResponse<User>> {
     this.httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'}),
       //params: new HttpParams().set('username', email)
     };
-    return this.http.get<ArrayBuffer>(this.verifyUrl, {headers: {'email': email}, observe: 'response'}/**this.httpOptions*/);
+    return this.http.get<User>(this.verifyUrl + email, { observe: 'response'}/**this.httpOptions*/);
   }
 }
-//{headers: {'email': email}, observe: 'response'}
+//{headers: {'email': email}, observe: 'response'} headers: {'email': email},
