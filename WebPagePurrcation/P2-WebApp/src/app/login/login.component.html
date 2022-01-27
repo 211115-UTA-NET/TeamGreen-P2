@@ -6,7 +6,9 @@
     <input type="password" #password>
   </div>
   <div>
-    <button (click) = "verify(username.value, password.value)">Log In</button>
+    <a routerLink = "units">
+      <button (click) = "verify(username.value, password.value)">Log In</button>
+    </a>
   </div>
   <div *ngIf="verified; then newPageBlock; else elseBlock"></div>
   <ng-template #newPageBlock>
