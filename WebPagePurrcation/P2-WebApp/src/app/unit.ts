@@ -10,4 +10,5 @@ export interface Unit {
   Max_Guests: number;
   Unit_Desciption: string;
   Rating: number;
+  Photo_URL: string;
 }

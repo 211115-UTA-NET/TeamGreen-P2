@@ -6,11 +6,12 @@
   <!--Truncated for brevity -->
 <!--<button (click)="getData()">Fetch Data</button>-->
 </div>
-<div class="" *ngFor="let unit of units" style="text-align:center">
-<h3>
+<div class="forloop" *ngFor="let unit of units" style="text-align:center">
+<h3 id = "">
    {{ unit.Address }} &nbsp; {{ unit.City }} &nbsp; {{ unit.State }}
  </h3>
- <h4>Cat price per night ${{ unit.Price_Night_Cat }} </h4>
+ <h4 id = "price">Cat price per night ${{ unit.Price_Night_Cat }} </h4>
+ <img width="200" alt="thumbnail" [src]="unit.Photo_URL">
 
  
  <br>
