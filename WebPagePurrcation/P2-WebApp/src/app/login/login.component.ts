@@ -21,7 +21,7 @@ export class LoginComponent {
   
   verify(email: string, password: string): void {
     this.userService.verify(email, password).subscribe(user => this.user = user);
-    console.log(this.user?.body?.Email);
+    console.log(this.user);
     if (this.user?.body?.Email == email) {
       this.verified = true;
     } else {
