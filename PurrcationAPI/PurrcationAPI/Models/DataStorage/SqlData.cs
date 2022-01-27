@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PurrcationAPI.Models.Logic;
 using System.Data;
 using System.Data.SqlClient;
-using PurrcationAPI.Models.Logic;
 
 namespace PurrcationAPI.Models.DataStorage
 {
@@ -27,8 +22,10 @@ namespace PurrcationAPI.Models.DataStorage
             connection.Open();
 
             using SqlCommand cmd = new(
-                @"Select *
-                from Units",
+                @"SELECT *
+                FROM Photos
+                INNER JOIN Units
+                ON Photos.Unit_ID = Units.Unit_ID",
                 connection);
 
             using SqlDataAdapter adapter = new(cmd);
@@ -40,7 +37,7 @@ namespace PurrcationAPI.Models.DataStorage
             foreach (DataRow row in dataSet.Tables[0].Rows)
             {
 
-                int Unit_Type_ID = Convert.ToInt32(row["Unit_Type_ID"]);
+                string? Unit_Type_ID = row["Unit_Type_ID"].ToString();
                 int Owner_ID = Convert.ToInt32(row["Owner_ID"].ToString());
                 string? Address = row["Address"].ToString();
                 string? City = row["City"].ToString();
@@ -49,9 +46,11 @@ namespace PurrcationAPI.Models.DataStorage
                 string? Price_Night_Cat = row["Price_Night_Cat"].ToString();
                 int Zip_Code = Convert.ToInt32(row["Zip_Code"]);
                 int Max_Guests = Convert.ToInt32(row["Max_Guests"]);
+                string? Photo_URL = row["Photo_URL"].ToString();
+                string? Unit_ID = row["Unit_ID"].ToString();
 
 
-                result.Add(new(Unit_Type_ID, Owner_ID, Address, City, State, Unit_Description, Price_Night_Cat, Zip_Code, Max_Guests));
+                result.Add(new(Unit_ID,Unit_Type_ID, Owner_ID, Address, City, State, Unit_Description, Price_Night_Cat, Zip_Code, Max_Guests, Photo_URL));
 
             }
 
@@ -82,7 +81,7 @@ namespace PurrcationAPI.Models.DataStorage
             foreach (DataRow row in dataSet.Tables[0].Rows)
             {
 
-                int Unit_Type_ID = Convert.ToInt32(row["Unit_Type_ID"]);
+                string Unit_Type_ID = row["Unit_Type_ID"].ToString();
                 int Owner_ID = Convert.ToInt32(row["Owner_ID"].ToString());
                 string? Address = row["Address"].ToString();
                 string? City = row["City"].ToString();
@@ -91,9 +90,10 @@ namespace PurrcationAPI.Models.DataStorage
                 string? Price_Night_Cat = row["Price_Night_Cat"].ToString();
                 int Zip_Code = Convert.ToInt32(row["Zip_Code"]);
                 int Max_Guests = Convert.ToInt32(row["Max_Guests"]);
+                string? Photo_URL = row["Photo_URL"].ToString();
 
 
-                result.Add(new(Unit_Type_ID, Owner_ID, Address, City, State, Unit_Description, Price_Night_Cat, Zip_Code, Max_Guests));
+                result.Add(new(Id,Unit_Type_ID, Owner_ID, Address, City, State, Unit_Description, Price_Night_Cat, Zip_Code, Max_Guests, Photo_URL));
 
             }
 
@@ -184,7 +184,7 @@ namespace PurrcationAPI.Models.DataStorage
             {
                 connection.Close();
 
-            }          
+            }
             return result;
         }
         //This method will add a new user to the database 
@@ -208,7 +208,7 @@ namespace PurrcationAPI.Models.DataStorage
         }
         public void AddNewUnit(List<Unit> unit)
         {
-           // unit[0].Unit_Type_ID, unit[0].Owner_ID, unit[0].Address, unit[0].City, unit[0].State, unit[0].Zip_Code, unit[0].Unit_Description, unit[0].Price_Night_Cat, unit[0].Max_Guests
+            // unit[0].Unit_Type_ID, unit[0].Owner_ID, unit[0].Address, unit[0].City, unit[0].State, unit[0].Zip_Code, unit[0].Unit_Description, unit[0].Price_Night_Cat, unit[0].Max_Guests
             using SqlConnection connection = new(connectionString);
             connection.Open();
             string query = "INSERT INTO Unit (Unit_Type_ID, Owner_ID, Address,City,State,Unit_Description,Price_Night_Cat,Zip_Code,Max_Guests)";
@@ -289,7 +289,7 @@ namespace PurrcationAPI.Models.DataStorage
 
             myCommand.Parameters.AddWithValue("@Need_ID", catNeeds[0].Need_ID);
             myCommand.Parameters.AddWithValue("@Cat_ID", catNeeds[0].Cat_ID);
-           
+
             myCommand.ExecuteNonQuery();
             connection.Close();
         }
