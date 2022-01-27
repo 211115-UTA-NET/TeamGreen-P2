@@ -90,6 +90,27 @@ namespace PurrcationAPI.Controllers
            
 
         }
+
+        [HttpGet("/VerifyCredentialsQuery/")]
+        public ActionResult VerifyCredentialsQuery([FromQuery(Name = "username")] string username)
+        {
+            Account account = new Account();
+            // bool ans = account.checkIfUsrExist(username, getConnectionString());
+            SqlData repository = new SqlData(getConnectionString());
+            List<Account> result = repository.VerifyCredentials(username);
+            var json = Newtonsoft.Json.JsonConvert.SerializeObject(result);
+
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+
+            return new ContentResult()
+            {
+                StatusCode = 200,
+                ContentType = "application/json",
+                Content = json
+            };
+
+
+        }
         [HttpPost("/signup")]
         public async Task<IActionResult> AddUser(List<User> usr)
         {
