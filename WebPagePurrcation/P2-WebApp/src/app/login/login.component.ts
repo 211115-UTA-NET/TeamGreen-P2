@@ -14,8 +14,8 @@ export class LoginComponent {
 
   @Output() email = new EventEmitter<string>();
   @Output() password = new EventEmitter<string>();
-  userhttp: HttpResponse<User> | undefined;
-  public user: any;
+  userhttp: HttpResponse<User[]> | undefined;
+  public user: User[] | undefined | null;
   verified: boolean | undefined;
   parsed: any;
 
@@ -27,12 +27,18 @@ export class LoginComponent {
       this.userhttp = response;
     });
 
-    this.user = this.userhttp?.body;
+    this.user = <User[]>this.userhttp?.body;
     console.log(this.user);
     console.log(this.userhttp);
     console.log("emails");
-    console.log(this.user?.Email);
+    console.log(this.user[0].Email);
     console.log(this.userhttp?.body);
+
+    if(this.user[0].Email == email) {
+      this.verified = true;
+    } else {
+      this.verified = false;
+    }
 
     /**if (this.userhttp?.body != undefined) {
       console.log(this.userhttp.body);
