@@ -18,7 +18,7 @@ export class UnitsComponent implements OnInit {
   constructor(private unitService: UnitService, private http: HttpClient) { }
 
   ngOnInit(): void {
-    //this.getUnits();
+    this.showUnits();
   }
   /**this.userService.verify(email, password).subscribe(response => {
       this.http.jsonp;
