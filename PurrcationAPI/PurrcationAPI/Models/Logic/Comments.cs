@@ -19,6 +19,7 @@
             this.Review = Review;
             this.Rating = Rating;
             this.RatPost_Date_Timeing = RatPost_Date_Timeing;
+            this.Review = Review;
         }
 
         public string getDateTime()
