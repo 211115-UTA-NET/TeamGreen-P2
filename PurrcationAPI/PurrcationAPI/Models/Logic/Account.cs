@@ -8,10 +8,10 @@ namespace PurrcationAPI.Models.Logic
 
         [JsonProperty]
 
-        public string Fname { get; set; }
+        public string FirstName { get; set; }
         [JsonProperty]
 
-        public string Lname { get; set; }
+        public string LastName { get; set; }
         [JsonProperty]
 
         public string Password { get; set; }
@@ -26,8 +26,8 @@ namespace PurrcationAPI.Models.Logic
 
         public Account(string Fname, string Lname, string Password, string Email, string userType)
         {
-            this.Fname = Fname;
-            this.Lname = Lname;
+            this.FirstName = Fname;
+            this.LastName = Lname;
             this.Password = Password;
             this.Email = Email;
             this.userType = userType;
@@ -43,7 +43,8 @@ namespace PurrcationAPI.Models.Logic
             //check UserId with DB data to see if user exist.
             //return true if yes or return false
             SqlData repository = new SqlData(connectionString);
-            return  repository.VerifyCredentials(userID);
+           // return  repository.VerifyCredentials(userID);
+           return true;
         }
 
         public int IdGenerator()

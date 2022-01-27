@@ -68,61 +68,23 @@ namespace PurrcationAPI.Controllers
             };
         }
         [HttpGet("/VerifyCredentials/")]
-        public ActionResult<bool> VerifyCredentials([FromQuery(Name = "username")] string username)
+        public ActionResult VerifyCredentials([FromQuery(Name = "username")] string username)
         {
                 Account account = new Account();
-                bool ans = account.checkIfUsrExist(username, getConnectionString());
-                Response.Headers.Add("Access-Control-Allow-Origin", "*");
-            if (ans) {
-                Response.StatusCode(200);
-                return true;
-            } else {
-                Response.StatusCode(105);
-                return false;
-            }
+            // bool ans = account.checkIfUsrExist(username, getConnectionString());
+            SqlData repository = new SqlData(getConnectionString());
+            List<Account> result = repository.VerifyCredentials(username);
+            var json = Newtonsoft.Json.JsonConvert.SerializeObject(result);
 
-                /*if (ans)
-                {
-                    return new ContentResult()
-                    {
-                        //StatusCode = 200,
-                    };
-                }
-                else
-                {
-                    return new ContentResult()
-                    {
-                        StatusCode = 501,
-
-
-            //   SqlData repository = new SqlData(getConnectionString());
-            //   List<Unit> result = repository.GetUnitById(id);
-            //  var json = Newtonsoft.Json.JsonConvert.SerializeObject(result);
-              var json = Newtonsoft.Json.JsonConvert.SerializeObject(true);
-
-	    Response.Headers.Add("Access-Control-Allow-Origin", "*");
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
 
             return new ContentResult()
-
-            if (ans)
-
             {
-                return new ContentResult()
-                {
-                    StatusCode = 200,               
-                };
-            }
-            else
-            {
-                return new ContentResult()
-                {
-                    StatusCode = 501,
-                  
-                };
-            }
-
-                    };
-                }  */       
+                StatusCode = 200,
+                ContentType = "application/json",
+                Content = json
+            };
+           
 
         }
         [HttpPost("/signup")]

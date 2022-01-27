@@ -99,10 +99,10 @@ namespace PurrcationAPI.Models.DataStorage
 
             return result;
         }
-        public Boolean VerifyCredentials(string Email)
+        public List<Account> VerifyCredentials(string Email)
         {
-            Boolean result = false;
-           // List<User> result = new();
+            List<Account> result = new();
+            result.Add(new("Not found", "Not found", "Not found", "Not found", "Not found"));
 
 
             using SqlConnection connection = new(connectionString);
@@ -123,8 +123,15 @@ namespace PurrcationAPI.Models.DataStorage
 
                 foreach (DataRow row in dataSet.Tables[0].Rows)
                 {
-                    result= true;
+                    result.Clear();
+                    string? Fname = row["First_Name"].ToString();
+                    string? Lname = row["Last_Name"].ToString();
+                    string? Password = row["Password"].ToString();
+                    string? UserType = row["User_Type_ID"].ToString();
+
                     //string? Emails = row["Email"].ToString();
+                    result.Add(new(Fname, Lname, Password, Email, UserType));
+
 
                 }
             }
@@ -150,8 +157,8 @@ namespace PurrcationAPI.Models.DataStorage
             query += " VALUES (@First_Name, @Last_Name, @Password, @Email, @User_Type_ID)";
             SqlCommand myCommand = new SqlCommand(query, connection);
 
-            myCommand.Parameters.AddWithValue("@First_Name", usr.Fname);
-            myCommand.Parameters.AddWithValue("@Last_Name", usr.Lname);
+            myCommand.Parameters.AddWithValue("@First_Name", usr.FirstName);
+            myCommand.Parameters.AddWithValue("@Last_Name", usr.LastName);
             myCommand.Parameters.AddWithValue("@Password", usr.Password);
             myCommand.Parameters.AddWithValue("@Email", usr.Email);
             myCommand.Parameters.AddWithValue("@User_Type_ID", usr.userType);
