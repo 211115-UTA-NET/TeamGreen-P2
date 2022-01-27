@@ -25,8 +25,19 @@ export class LoginComponent {
     this.userService.verify(email, password).subscribe(response => {
       this.http.jsonp;
       this.userhttp = response;
+      this.user = <User[]>this.userhttp?.body;
+    console.log(this.user);
+    console.log(this.userhttp);
+    console.log("emails");
+    console.log(this.user[0].Email);
+    console.log(this.userhttp?.body);
+    if(this.user[0].Email == email) {
+      this.verified = true;
+    } else {
+      this.verified = false;
+    }
     });
-
+/**
     this.user = <User[]>this.userhttp?.body;
     console.log(this.user);
     console.log(this.userhttp);
@@ -38,7 +49,7 @@ export class LoginComponent {
       this.verified = true;
     } else {
       this.verified = false;
-    }
+    }*/
 
     /**if (this.userhttp?.body != undefined) {
       console.log(this.userhttp.body);

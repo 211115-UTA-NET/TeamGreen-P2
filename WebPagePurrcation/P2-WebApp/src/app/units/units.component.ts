@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UnitService } from '../unit.service';
 import { Unit } from '../unit';
-import { HttpResponse } from '@angular/common/http';
+import { HttpResponse, HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-units',
@@ -11,24 +11,27 @@ import { HttpResponse } from '@angular/common/http';
 export class UnitsComponent implements OnInit {
 
   units: Unit[] = [];
-  unit: HttpResponse<Unit[]> | undefined;
+  unnis: HttpResponse<Unit[]> | undefined;
   seeUnits: boolean = false;
   seeUnitDetails: boolean = false;
 
-  constructor(private unitService: UnitService) { }
+  constructor(private unitService: UnitService, private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.getUnits();
+    //this.getUnits();
   }
+  /**this.userService.verify(email, password).subscribe(response => {
+      this.http.jsonp;
+      this.userhttp = response;
+      this.user = <User[]>this.userhttp?.body; */
 
   getUnits(): void {
-    const unnis = this.unitService.getUnits();
-    if (unnis != undefined) {
-      unnis.subscribe(unit => this.unit = unit);
-    } else {
-      console.log("error in get units unnis is undefined")
-    }
-    console.log(this.unit);
+    const unnis = this.unitService.getUnits().subscribe(unit => {
+      this.http.jsonp;
+      this.unnis = unit;
+      this.units = <Unit[]>this.unnis?.body;
+      console.log(this.units[0].Address);
+    });
   }
 
   showUnits(): void {
