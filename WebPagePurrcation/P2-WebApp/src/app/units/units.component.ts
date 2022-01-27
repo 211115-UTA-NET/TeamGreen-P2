@@ -13,6 +13,7 @@ export class UnitsComponent implements OnInit {
   units: Unit[] = [];
   unit: HttpResponse<Unit[]> | undefined;
   seeUnits: boolean = false;
+  seeUnitDetails: boolean = false;
 
   constructor(private unitService: UnitService) { }
 
@@ -21,12 +22,21 @@ export class UnitsComponent implements OnInit {
   }
 
   getUnits(): void {
-    this.unitService.getUnits().subscribe(unit => this.unit = unit);
+    const unnis = this.unitService.getUnits();
+    if (unnis != undefined) {
+      unnis.subscribe(unit => this.unit = unit);
+    } else {
+      console.log("error in get units unnis is undefined")
+    }
     console.log(this.unit);
   }
 
   showUnits(): void {
     this.getUnits();
     this.seeUnits = true;
+  }
+
+  getSpecificUnitDetails(id: number): void {
+    this.seeUnitDetails = true;
   }
 }

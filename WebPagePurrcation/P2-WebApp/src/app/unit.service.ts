@@ -11,6 +11,8 @@ import { catchError, map, tap } from 'rxjs/operators';
 export class UnitService {
 
   private unitsUrl = 'https://purrcationapi.azurewebsites.net/getallunits';
+  unnis: HttpResponse<Unit[]> | undefined;
+  units: Unit[] | null | undefined;
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -22,13 +24,16 @@ export class UnitService {
     return this.http.get<Unit[]>(this.unitsUrl, {observe: 'response'});
   }
 
-  //getUnit(id: number): Observable<Unit> {
+  getUnit(id: number): Observable<Unit> | undefined {
     // For now, assume that a hero with the specified `id` always exists.
     // Error handling will be added in the next step of the tutorial.
-    //const unit = HEROES.find(h => h.id === id)!;
-    
-    //return of(unit);
-  //}
+    if (this.units != null) {
+      const unit = this.units.find(h => h.Unit_ID === id)!;
+      return of(unit);
+    } else {
+      return undefined;
+    }
+  }
 
   /** PUT: update the hero on the server */
   updateUnit(unit: Unit): Observable<any> {

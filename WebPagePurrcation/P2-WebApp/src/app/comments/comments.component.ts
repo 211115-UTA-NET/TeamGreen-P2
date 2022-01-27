@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Comment } from '../comment';
 import { CommentService } from '../comment.service';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -13,10 +15,11 @@ export class CommentsComponent implements OnInit {
   commentService: CommentService;
   seeComments: boolean = false;
   comments: Comment[] = [];
+  id: number = 0;
   
-  constructor(commentService: CommentService) {
+  constructor(commentService: CommentService, private route: ActivatedRoute, private location: Location) {
     this.commentService = commentService;
-   }
+  }
 
   ngOnInit(): void {
 
@@ -26,8 +29,10 @@ export class CommentsComponent implements OnInit {
     this.commentService.getComments(unit_id);  
   }
 
-  showComments(/**unit_id: number*/) {
-    //this.getCommentsForUnit(unit_id);
+  showComments() {
+    const id = Number(this.route.snapshot.paramMap.get('Unit_ID'));
+    this.id = id;
+    this.getCommentsForUnit(id);
     this.seeComments = true;
   }
 

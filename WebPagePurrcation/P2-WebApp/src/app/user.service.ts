@@ -2,6 +2,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams, HttpResponse, HttpEvent } from '@angular/common/http';
 import { User } from './user';
+import { catchError, map, tap } from 'rxjs/operators';
 
 
 @Injectable({

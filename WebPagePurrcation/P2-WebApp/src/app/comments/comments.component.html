@@ -5,7 +5,7 @@
   <ul class="comments">
     <li *ngFor = "let comment of comments">
       <a routerLink = "details/{{comment.Comment_ID}}"></a>
-      <span class = "tile">{{comment.Comment_ID}}</span> {{comment.Content}}
+      <span class = "tile">{{comment.Comment_ID}}</span> {{comment.Content}}, {{comment.Rating}}
     </li>
   </ul>
 </ng-template>
