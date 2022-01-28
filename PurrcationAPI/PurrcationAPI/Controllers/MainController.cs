@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using PurrcationAPI.Models.DataStorage;
 using PurrcationAPI.Models.Logic;
 using System.ComponentModel.DataAnnotations;
@@ -22,6 +23,7 @@ namespace PurrcationAPI.Controllers
         }
 
         [HttpGet("/GetCommentById/{Id}")]
+       
         public ContentResult GetCommentById(string id)
         {
 
@@ -66,8 +68,24 @@ namespace PurrcationAPI.Controllers
                 Content = json
             };
         }
-        [HttpPost("/signup")]
+        [HttpGet("/GetOwnerUnitById/{Id}")]
+        public ContentResult GetOwnerUnitById(string id)
+        {
 
+            SqlData repository = new SqlData(getConnectionString());
+            List<Unit> result = repository.GetOwnerUnitById(id);
+            var json = Newtonsoft.Json.JsonConvert.SerializeObject(result);
+
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+
+
+            return new ContentResult()
+            {
+                StatusCode = 200,
+                ContentType = "application/json",
+                Content = json
+            };
+        }
         [HttpGet("/GetUnitById/{Id}")]
         public ContentResult GetUnitById(string id)
         {
@@ -130,13 +148,18 @@ namespace PurrcationAPI.Controllers
 
 
         }
-        [HttpPost("/signup")]
-        public async Task<IActionResult> AddUser(List<User> usr)
-        {
-            Account newUsr = new Account(usr[0].Fname, usr[0].Lname, usr[0].Password, usr[0].Email, usr[0].UserType);
+       // [EnableCors("*", "*", "*")]
 
-            SqlData repository = new SqlData(getConnectionString());
-            repository.AddNewUser(newUsr);
+        [HttpPost("/signup")]
+        public async Task<IActionResult> AddUser( PostBody ok)
+        {
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+
+            //string t = ok;
+            // Account newUsr = new Account(usr[0].Fname, usr[0].Lname, usr[0].Password, usr[0].Email, usr[0].UserType);
+
+            // SqlData repository = new SqlData(getConnectionString());
+            //  repository.AddNewUser(newUsr);
 
             return new ContentResult()
             {

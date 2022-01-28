@@ -21,16 +21,20 @@ namespace PurrcationAPI.Models.Logic
         [JsonProperty]
 
         public string userType { get; set; }
+        [JsonProperty]
+
+        public string userId { get; set; }
 
 
 
-        public Account(string Fname, string Lname, string Password, string Email, string userType)
+        public Account(string Fname, string Lname, string Password, string Email, string userType, string userId)
         {
             this.FirstName = Fname;
             this.LastName = Lname;
             this.Password = Password;
             this.Email = Email;
             this.userType = userType;
+            this.userId = userId;
 
 
         }
