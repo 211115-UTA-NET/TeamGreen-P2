@@ -3,11 +3,11 @@ img {
     max-width: 40%;
     max-height: 40%;
     margin:0pt;
-    z-index: -1;
+    z-index: -10;
     float:left;
     margin:2em;
 }
 .unitDetails {
-    
+    z-index: 10;
     float:left
 }
