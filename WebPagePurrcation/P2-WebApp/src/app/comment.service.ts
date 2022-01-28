@@ -11,7 +11,9 @@ export class CommentService {
   http: HttpClient;
   comments: Comment[] = [];
   getCommentsUrl: string = 'https://purrcationapi.azurewebsites.net/GetCommentById/';
-  submitCommentUrl: string = '';
+  submitCommentUrl: string = 'https://purrcationapi.azurewebsites.net/AddComments/?comments=';
+
+  
 
   constructor(http: HttpClient) { 
     this.http = http;
@@ -23,7 +25,7 @@ export class CommentService {
 
   }
 
-  submitComment(review:string, rating:number, id:number) : void {
-    this.http.post<any>(this.submitCommentUrl, {Review: review, Rating: rating, Id: id});
+  submitComment(info: string, id: number) : void {
+    this.http.get<any>(this.submitCommentUrl + info + ":" + id);
   }
 }

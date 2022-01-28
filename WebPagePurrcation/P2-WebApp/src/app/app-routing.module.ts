@@ -22,9 +22,7 @@ const routes: Routes = [
   { path: 'owner-login', component: OwnerLoginComponent },
   { path: 'owner-units/:User_ID', component: OwnerUnitsComponent },
   { path: 'unit-detail/:Unit_ID/comments/', component: CommentsComponent },
-  { path: 'add-unit', component: AddUnitComponent}
-  
-  
+  { path: 'add-unit/:User_ID', component: AddUnitComponent}
 ];
 
 @NgModule({

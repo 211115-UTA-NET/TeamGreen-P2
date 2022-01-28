@@ -32,8 +32,8 @@ export class UnitService {
   }
 
   /** PUT: update the hero on the server */
-  submitUnit(address: string, city: string, state: string, zip: string, pictureUrl: string, description: string, price: number, maxGuests: number): void {
-    this.http.post(this.unitsUrl, {Address: address, State: state, City: city, ZipCode: zip, PictureURL: pictureUrl, Description: description, Price: price, MaxGuests: maxGuests}, this.httpOptions);
+  submitUnit(info: string, id: number): void {
+    this.http.get<any>(this.unitsUrl+info+":"+id, this.httpOptions);
   }
 
   getOwnerUnits(id: number): Observable<HttpResponse<Unit[]>> {

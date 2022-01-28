@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { UnitService } from '../unit.service';
 import { Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -20,18 +21,14 @@ export class AddUnitComponent implements OnInit {
   @Output() maxGuests = new EventEmitter<string>();
   
 
-  constructor(private unitservice: UnitService, private location: Location) { }
+  constructor(private unitservice: UnitService, private location: Location, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
   }
 
-  submitUnit(address: string, city: string, state: string, zip: string, pictureUrl: string, description: string, price: string, maxGuests: string): void {
-    let pri = <unknown>price;
-    let pric = <number>pri;
-    let maxg = <unknown>maxGuests;
-    let maxgu = <number>maxg;
-    this.unitservice.submitUnit(address, city, state, zip, pictureUrl, description, pric, maxgu);
+  submitUnit(info: string): void {
+    const id = Number(this.route.snapshot.paramMap.get('Unit_ID'));
+    this.unitservice.submitUnit(info, id);
     this.location.back();
   }
-
 }

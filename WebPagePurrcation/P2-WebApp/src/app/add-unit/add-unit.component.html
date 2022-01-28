@@ -25,4 +25,4 @@
         Max Guest Cats at One Time: <input id = "maxGuests" type="range" name="maxGuests" min="0" max="5" #maxGuests>
     </div>
   </form>
-  <button (click) = "submitUnit(address.value, city.value, state.value, zip.value, picture.value, description.value, price.value, maxGuests.value)">Submit</button>
+  <button (click) = "submitUnit(address.value +':'+ city.value +':'+ state.value +':'+ zip.value +':'+ picture.value +':'+ description.value +':'+ price.value +':'+ maxGuests.value)">Submit</button>

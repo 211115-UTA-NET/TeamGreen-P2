@@ -18,7 +18,7 @@ export class NewUserComponent {
   
   postData(info: string){
     
-    const url ='https://localhost:7112/signup/?user='+info;
+    const url ='https://purrcationapi.azurewebsites.net/signup/?user='+info;
     this.http.get(url).subscribe((res)=>{
       this.http.jsonp
       this.data = res
