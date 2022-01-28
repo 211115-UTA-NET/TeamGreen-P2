@@ -19,6 +19,7 @@ export class AddUnitComponent implements OnInit {
   @Output() description = new EventEmitter<string>();
   @Output() price = new EventEmitter<string>();
   @Output() maxGuests = new EventEmitter<string>();
+  @Output() id = new EventEmitter<string>();
   
 
   constructor(private unitservice: UnitService, private location: Location, private route: ActivatedRoute) { }
@@ -27,7 +28,8 @@ export class AddUnitComponent implements OnInit {
   }
 
   submitUnit(info: string): void {
-    this.unitservice.submitUnit(info);
-    this.location.back();
+    this.unitservice.submitUnit(info).subscribe(response => {
+      this.location.back();
+    });
   }
 }

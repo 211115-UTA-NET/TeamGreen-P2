@@ -33,8 +33,8 @@ export class UnitService {
   }
 
   /** PUT: update the hero on the server */
-  submitUnit(info: string): void {
-    this.http.get<any>(this.submitUnitUrl+info, this.httpOptions);
+  submitUnit(info: string): Observable<HttpResponse<any>> {
+    return this.http.get<any>(this.submitUnitUrl+info, {observe: 'response'});
   }
 
   getOwnerUnits(id: number): Observable<HttpResponse<Unit[]>> {
