@@ -27,8 +27,7 @@ export class AddUnitComponent implements OnInit {
   }
 
   submitUnit(info: string): void {
-    const id = Number(this.route.snapshot.paramMap.get('Unit_ID'));
-    this.unitservice.submitUnit(info, id);
+    this.unitservice.submitUnit(info);
     this.location.back();
   }
 }

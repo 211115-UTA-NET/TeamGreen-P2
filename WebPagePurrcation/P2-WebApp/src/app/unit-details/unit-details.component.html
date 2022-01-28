@@ -19,5 +19,10 @@
     <app-comments></app-comments>
     <h3>{{ unit[0].Price_Night_Cat }}</h3>
 </body>
+<button (click)="submitBooking()">Submit Booking</button>
+<div *ngIf="submitted; then submitblock;"></div>
+<ng-template #submitblock>
+    Booking Confirmed
+</ng-template>
 
 </html>
