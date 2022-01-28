@@ -4,5 +4,5 @@ export interface User {
     Last_Name: string;
     Password: string;
     Email: string;
-    User_Type: string;
+    User_Type: number;
   }

@@ -11,8 +11,11 @@ import { catchError, map, tap } from 'rxjs/operators';
 export class UnitService {
 
   private unitsUrl = 'https://purrcationapi.azurewebsites.net/getallunits';
+  private unitIdUrl = 'https://purrcationapi.azurewebsites.net/GetUnitById/';
+  private ownerUnitsUrl = 'https://purrcationapi.azurewebsites.net/GetOwnerById/';
   unnis: HttpResponse<Unit[]> | undefined;
   units: Unit[] | null | undefined;
+  unit: Unit | undefined;
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -24,20 +27,17 @@ export class UnitService {
     return this.http.get<Unit[]>(this.unitsUrl, {observe: 'response'});
   }
 
-  getUnit(id: number): Observable<Unit> | undefined {
-    // For now, assume that a hero with the specified `id` always exists.
-    // Error handling will be added in the next step of the tutorial.
-    if (this.units != null) {
-      const unit = this.units.find(h => h.Unit_ID === id)!;
-      return of(unit);
-    } else {
-      return undefined;
-    }
+  getUnit(id: number): Observable<HttpResponse<Unit[]>> | undefined {
+    return this.http.get<Unit[]>(this.unitIdUrl + "/" + id, {observe: 'response'});
   }
 
   /** PUT: update the hero on the server */
   updateUnit(unit: Unit): Observable<any> {
     return this.http.put(this.unitsUrl, unit, this.httpOptions);
+  }
+
+  getOwnerUnits(id: number): Observable<HttpResponse<Unit[]>> {
+    return this.http.get<Unit[]>(this.ownerUnitsUrl + "/" + id, {observe: 'response'});
   }
 
   /**

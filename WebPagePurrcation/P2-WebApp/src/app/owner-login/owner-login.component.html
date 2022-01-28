@@ -1,0 +1,25 @@
+<form>
+    <div>
+      <input type = "text" #username>
+    </div>
+    <div>
+      <input type="password" #password>
+    </div>
+    <div>
+      <a routerLink = "units">
+        <button (click) = "verify(username.value, password.value)">Log In</button>
+      </a>
+    </div>
+    <div *ngIf="verified; then newPageBlock; else elseBlock"></div>
+    <ng-template #newPageBlock>   
+      <a routerLink = "/units">
+        Show Units!
+       </a>
+    </ng-template>
+    <ng-template #elseBlock>
+      <div *ngIf="verified == false; then incorrectPasswordBlock;"></div>  
+      <ng-template #incorrectPasswordBlock>
+        <p>Password Incorrect Try Again</p>
+      </ng-template>
+    </ng-template>
+  </form>

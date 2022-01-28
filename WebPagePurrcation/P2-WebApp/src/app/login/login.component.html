@@ -11,8 +11,10 @@
     </a>
   </div>
   <div *ngIf="verified; then newPageBlock; else elseBlock"></div>
-  <ng-template #newPageBlock>
-    <app-units></app-units>
+  <ng-template #newPageBlock>   
+    <a routerLink = "/units">
+      Show Units!
+     </a>
   </ng-template>
   <ng-template #elseBlock>
     <div *ngIf="verified == false; then incorrectPasswordBlock;"></div>  

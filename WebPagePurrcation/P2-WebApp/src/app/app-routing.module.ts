@@ -7,14 +7,16 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NewUserComponent } from './new-user/new-user.component';
 import { UnitDetailsComponent } from './unit-details/unit-details.component';
 import { LoginComponent } from './login/login.component';
+import { OwnerLoginComponent } from './owner-login/owner-login.component';
 
 const routes: Routes = [ 
   { path: 'units', component: UnitsComponent },
   { path: 'browse', component: BrowseComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'new-user', component: NewUserComponent },
-  { path: 'unit-details', component: UnitDetailsComponent },
+  { path: 'unit-details/:Unit_ID', component: UnitDetailsComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'owner-login', component: OwnerLoginComponent }
   
 ];
 

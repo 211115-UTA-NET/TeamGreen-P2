@@ -14,6 +14,7 @@ import { UnitDetailsComponent } from './unit-details/unit-details.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CommentsComponent } from './comments/comments.component';
 import { FormsModule } from '@angular/forms';
+import { OwnerLoginComponent } from './owner-login/owner-login.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FormsModule } from '@angular/forms';
     BrowseComponent,
     UnitDetailsComponent,
     DashboardComponent,
-    CommentsComponent
+    CommentsComponent,
+    OwnerLoginComponent
   ],
   imports: [
     BrowserModule,
