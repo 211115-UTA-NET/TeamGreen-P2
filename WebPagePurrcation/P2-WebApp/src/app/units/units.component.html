@@ -1,20 +1,29 @@
-<div style="text-align:center">
-  <h1>
-    Welcome to Purrcation!
-  </h1>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Unit Details</title>
+        <link href="./units.component.css" rel="stylesheet" />
+        <link rel="apple-touch-icon" sizes="180x180" href="../../../../FaviconCat/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="../../../../FaviconCat/favicon-16x16.png">
+        <link rel="manifest" href="../../../../FaviconCat/site.webmanifest"> 
+    </head>
+    <body><div style="text-align:center">
+
   <br/>
   <!--Truncated for brevity -->
 <!--<button (click)="getData()">Fetch Data</button>-->
 </div>
 <div class="forloop" *ngFor="let unit of units" style="text-align:center">
-<h3 id = "">
-   {{ unit.Address }} &nbsp; {{ unit.City }} &nbsp; {{ unit.State }}
- </h3>
- <h4 id = "price">Cat price per night ${{ unit.Price_Night_Cat }} </h4>
- <img id = "image" width="200" alt="thumbnail" [src]="unit.Photo_URL">
+
  <br>
  <a routerLink = "/unit-details/{{unit.Unit_ID}}">
-  <button class="button">Select</button>
+  <button class="unitListing"><img [src]="unit.Photo_URL"><h3 id = "">
+    {{ unit.Address }} &nbsp; {{ unit.City }} &nbsp; {{ unit.State }}
+  </h3>
+  <h4 id = "price">Cat price per night ${{ unit.Price_Night_Cat }} </h4>
+  <p id="rating"> Rating: {{ unit.Rating }}</p>
+  </button>
  </a>
  
 </div>
