@@ -10,30 +10,35 @@
 </head>
 <body>
   <div>
-    <form action="/" method="post">
+    <form action="/action_page.php" method="post">
         <table>
             <tr>
-                <td><label for="fname">First Name:</label></td>
-                <td><input name="fname" type="text" required /></td>
+                <td><label for="Fname">First Name:</label></td>
+                <td><input id="Fname" type="text" #Fname required /></td>
             </tr>
             <tr>
-                <td><label for="lname">Last Name:</label></td>
-                <td><input name="lname" type="text" required /></td>
+                <td><label for="Lname">Last Name:</label></td>
+                <td><input id="Lname" type="text" #Lname required /></td>
             </tr>
             <tr>
-                <td><label for="email">Email:</label></td>
-                <td><input name="email" type="email" placeholder="user@example.com" required /></td>
+                <td><label for="Email">Email:</label></td>
+                <td><input id="Email" type="email" placeholder="user@example.com" #Email required /></td>
             </tr>
             <tr>
-                <td><label for="pwd">Select a password:</label></td>
-                <td><input type="password" name="pwd" value="" required /></td>
+                <td><label for="psw">Select a password:</label></td>
+                <td><input type="password" id="psw" #psw required /></td>
             </tr>
             <tr>
-                <td><label for="pwd-repeat">Repeat Password:</label></td>
-                <td><input type="password" name="pwd-repeat" required /></td>
+                <td><label for="psw-repeat">Repeat Password:</label></td>
+                <td><input type="password" name="psw-repeat" required /></td>
             </tr>
         </table>
-        <button type="submit">Sign Up!</button>
+        <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+        <div class="clearfix">
+       
+          <button  (click)="postData(Email.value+':'+psw.value+':'+Fname.value+':'+Lname.value)">Sign up</button>
+  
+        </div>
     </form>
 </div>
 
