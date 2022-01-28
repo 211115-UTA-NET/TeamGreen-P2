@@ -13,7 +13,7 @@ import { HttpResponse, HttpClient } from '@angular/common/http';
 export class UnitDetailsComponent implements OnInit {
 
   id: number = 0;
-  unit: Unit[] | undefined | null;
+  unit: Unit[] = [];
   unni: HttpResponse<Unit[]> | undefined;
 
   constructor(private route: ActivatedRoute, private unitService: UnitService, private location: Location, private http: HttpClient) { }
