@@ -7,17 +7,17 @@ import { HttpClient } from "@angular/common/http";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent  {
   title = 'purrcation';
+  data2: any = {};
   public data:any = []
-  constructor(private http: HttpClient) {
+
+  constructor(private http: HttpClient) {}
+  
+  
+  postData(info: string){
     
-  }
-  
-  
-  
-  getData(){
-    const url ='https://purrcationapi.azurewebsites.net/getallunits'
+    const url ='https://localhost:7112/signup/?user='+info;
     this.http.get(url).subscribe((res)=>{
       this.http.jsonp
       this.data = res
@@ -27,8 +27,8 @@ export class AppComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {
-    this.getData()
-  }
+ // ngOnInit(): void {
+ //   this.postData(name: string)
+  //}
 
  }

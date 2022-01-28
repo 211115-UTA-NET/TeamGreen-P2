@@ -89,9 +89,9 @@ namespace PurrcationAPI.Models.DataStorage
                 int Zip_Code = Convert.ToInt32(row["Zip_Code"]);
                 int Max_Guests = Convert.ToInt32(row["Max_Guests"]);
                 string? Photo_URL = row["Photo_URL"].ToString();
+                string? Unit_ID = row["Unit_ID"].ToString();
 
-
-                result.Add(new(Id,Unit_Type_ID, Owner_ID, Address, City, State, Unit_Description, Price_Night_Cat, Zip_Code, Max_Guests, Photo_URL));
+                result.Add(new(Unit_ID, Unit_Type_ID, Owner_ID, Address, City, State, Unit_Description, Price_Night_Cat, Zip_Code, Max_Guests, Photo_URL));
 
             }
 
@@ -121,7 +121,7 @@ namespace PurrcationAPI.Models.DataStorage
 
             foreach (DataRow row in dataSet.Tables[0].Rows)
             {
-
+                string Unit_ID = row["Unit_ID"].ToString();
                 string Unit_Type_ID = row["Unit_Type_ID"].ToString();
                 int Owner_ID = Convert.ToInt32(row["Owner_ID"].ToString());
                 string? Address = row["Address"].ToString();
@@ -134,7 +134,7 @@ namespace PurrcationAPI.Models.DataStorage
                 string? Photo_URL = row["Photo_URL"].ToString();
 
 
-                result.Add(new(Id, Unit_Type_ID, Owner_ID, Address, City, State, Unit_Description, Price_Night_Cat, Zip_Code, Max_Guests, Photo_URL));
+                result.Add(new(Unit_ID, Unit_Type_ID, Owner_ID, Address, City, State, Unit_Description, Price_Night_Cat, Zip_Code, Max_Guests, Photo_URL));
 
             }
 
