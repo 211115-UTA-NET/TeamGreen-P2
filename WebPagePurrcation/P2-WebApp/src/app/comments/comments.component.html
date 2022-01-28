@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+<meta charset="utf-8" />
+<title>Comments</title>
+<link href="./comments.component.css" rel="stylesheet" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../FaviconCat/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../../../../FaviconCat/favicon-16x16.png">
+<link rel="manifest" href="../../../../FaviconCat/site.webmanifest">
+</head>
+<body>
+
 <h2>Browse Comments</h2>
 <button (click)="showComments()">View Reviews</button>
 <div *ngIf="seeComments; then commentBlock;"></div>
@@ -9,12 +21,15 @@
   </ul>
   <form>
     <div id = "review">
-      Leave a Review: <input id="review" #review>
+      Leave a Review: <br><textarea  id="review" #review rows="4" cols="50" placeholder=""></textarea>
     </div>
     <div>
       Leave a Rating:
       <input id = "rating" type="range" name="rating" min="0" max="5" #rating>
     </div>
+    <br>
     <button (click) = "submitComment(review.value, rating.value)">Submit</button>
   </form>
 </ng-template>
+</body>
+</html>

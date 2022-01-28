@@ -1,1 +1,41 @@
-<p>new-user works!</p>
+<!DOCTYPE html>
+<html>
+  <head>
+<meta charset="utf-8" />
+<title>New User</title>
+<link href="./new-user.component.css" rel="stylesheet" />
+<link rel="apple-touch-icon" sizes="180x180" href="../../../../FaviconCat/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../../../../FaviconCat/favicon-16x16.png">
+<link rel="manifest" href="../../../../FaviconCat/site.webmanifest">
+</head>
+<body>
+  <div>
+    <form action="/" method="post">
+        <table>
+            <tr>
+                <td><label for="fname">First Name:</label></td>
+                <td><input name="fname" type="text" required /></td>
+            </tr>
+            <tr>
+                <td><label for="lname">Last Name:</label></td>
+                <td><input name="lname" type="text" required /></td>
+            </tr>
+            <tr>
+                <td><label for="email">Email:</label></td>
+                <td><input name="email" type="email" placeholder="user@example.com" required /></td>
+            </tr>
+            <tr>
+                <td><label for="pwd">Select a password:</label></td>
+                <td><input type="password" name="pwd" value="" required /></td>
+            </tr>
+            <tr>
+                <td><label for="pwd-repeat">Repeat Password:</label></td>
+                <td><input type="password" name="pwd-repeat" required /></td>
+            </tr>
+        </table>
+        <button type="submit">Sign Up!</button>
+    </form>
+</div>
+
+</body>
+</html>

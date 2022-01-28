@@ -1,8 +1,28 @@
-<h1>Purrcation</h1>
-<nav>
-  <a routerLink = "/login">Log In</a> 
-  <a routerLink = "/new-user">New User</a>
-  <a routerLink = "/owner-login">Owner Log In</a>
-</nav>
-<router-outlet></router-outlet>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Purrcation</title>
+  <link href="./app.component.css" rel="stylesheet" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../../../FaviconCat/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../../FaviconCat/favicon-16x16.png">
+  <link rel="manifest" href="../../../FaviconCat/site.webmanifest">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
 
+<body>
+
+    <h1>
+      Welcome to Purrcation!
+    </h1>
+    
+  <nav class="topnav">
+    <a id="userLoginLink" routerLink="/login" href="#login">Log In</a> 
+    <a id="newUserLink" routerLink="/new-user" href="#new-user">New User</a>
+    <a id="ownerLoginLink" routerLink="/owner-login" href="#owner-login">Owner Log In</a>
+  </nav>
+  <router-outlet></router-outlet>
+
+</body>
+
+</html>
