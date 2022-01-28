@@ -1,4 +1,0 @@
-{
-    "appService.defaultWebAppToDeploy": "/subscriptions/004f7e24-19c8-45f6-8ef1-ee05ad3cb3af/resourceGroups/PurrcationClient/providers/Microsoft.Web/sites/PurrcationClient",
-    "appService.deploySubpath": "dist"
-}

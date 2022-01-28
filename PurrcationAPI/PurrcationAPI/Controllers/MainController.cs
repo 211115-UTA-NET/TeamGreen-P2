@@ -150,11 +150,10 @@ namespace PurrcationAPI.Controllers
         }
        // [EnableCors("*", "*", "*")]
 
-        [HttpPost("/signup")]
-        public async Task<IActionResult> AddUser( PostBody ok)
+        [HttpGet("/signup")]
+        public async Task<IActionResult> AddUser([FromQuery(Name = "user")] string info)
         {
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
-
             //string t = ok;
             // Account newUsr = new Account(usr[0].Fname, usr[0].Lname, usr[0].Password, usr[0].Email, usr[0].UserType);
 
