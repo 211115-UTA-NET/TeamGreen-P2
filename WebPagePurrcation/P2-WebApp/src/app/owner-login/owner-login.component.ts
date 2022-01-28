@@ -15,7 +15,8 @@ export class OwnerLoginComponent {
   @Output() email = new EventEmitter<string>();
   @Output() password = new EventEmitter<string>();
   userhttp: HttpResponse<User[]> | undefined;
-  public user: User[] | undefined | null;
+  public user: User[] =[];
+  public user_id: number = 0;
   verified: boolean | undefined;
   parsed: any;
 
@@ -25,17 +26,25 @@ export class OwnerLoginComponent {
     this.userService.verify(email, password).subscribe(response => {
       this.http.jsonp;
       this.userhttp = response;
-      this.user = <User[]>this.userhttp?.body;
-    console.log(this.user);
-    console.log(this.userhttp);
-    console.log("emails");
-    console.log(this.user[0].Email);
-    console.log(this.userhttp?.body);
-    if(this.user[0].Email == email) {
-      this.verified = true;
-    } else {
-      this.verified = false;
-    }
+      console.log(email + " emnail");
+      if (<User[]>this.userhttp?.body != undefined || <User[]>this.userhttp?.body != null) {
+        this.user = <User[]>this.userhttp?.body;
+        console.log(this.user);
+        console.log(this.userhttp);
+        console.log("emails");
+        console.log(this.user[0].Email);
+        console.log(this.userhttp?.body);
+        if(this.user[0].Email == email) {
+          this.verified = true;
+          this.user_id = this.user[0].userId;
+          console.log(this.user_id + " user_id");
+        } else {
+          this.verified = false;
+        }
+      } else {
+        console.log("ugh this.user is null or undefined");
+      }
+    
     });
   }
 }

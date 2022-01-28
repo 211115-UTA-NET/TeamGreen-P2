@@ -8,6 +8,7 @@ import { NewUserComponent } from './new-user/new-user.component';
 import { UnitDetailsComponent } from './unit-details/unit-details.component';
 import { LoginComponent } from './login/login.component';
 import { OwnerLoginComponent } from './owner-login/owner-login.component';
+import { OwnerUnitsComponent } from './owner-units/owner-units.component';
 
 const routes: Routes = [ 
   { path: 'units', component: UnitsComponent },
@@ -16,7 +17,9 @@ const routes: Routes = [
   { path: 'new-user', component: NewUserComponent },
   { path: 'unit-details/:Unit_ID', component: UnitDetailsComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'owner-login', component: OwnerLoginComponent }
+  { path: 'owner-login', component: OwnerLoginComponent },
+  { path: 'owner-units/:User_ID', component: OwnerUnitsComponent }
+  
   
 ];
 

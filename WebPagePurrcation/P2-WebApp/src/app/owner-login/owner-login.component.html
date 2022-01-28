@@ -12,7 +12,7 @@
     </div>
     <div *ngIf="verified; then newPageBlock; else elseBlock"></div>
     <ng-template #newPageBlock>   
-      <a routerLink = "/units">
+      <a routerLink = "/owner-units/{{user_id}}">
         Show Units!
        </a>
     </ng-template>
