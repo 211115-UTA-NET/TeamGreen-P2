@@ -98,7 +98,7 @@ namespace PurrcationAPI.Models.DataStorage
             return result;
         }
 
-        public List<Unit> GetOwnerById(string Id)
+        public List<Unit> GetOwnerUnitById(string Id)
         {
             List<Unit> result = new();
 

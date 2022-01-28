@@ -68,12 +68,12 @@ namespace PurrcationAPI.Controllers
                 Content = json
             };
         }
-        [HttpGet("/GetOwnerById/{Id}")]
-        public ContentResult GetOwnerById(string id)
+        [HttpGet("/GetOwnerUnitById/{Id}")]
+        public ContentResult GetOwnerUnitById(string id)
         {
 
             SqlData repository = new SqlData(getConnectionString());
-            List<Unit> result = repository.GetOwnerById(id);
+            List<Unit> result = repository.GetOwnerUnitById(id);
             var json = Newtonsoft.Json.JsonConvert.SerializeObject(result);
 
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
