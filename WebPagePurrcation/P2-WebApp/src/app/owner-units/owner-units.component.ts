@@ -32,8 +32,9 @@ export class OwnerUnitsComponent implements OnInit {
     const unnis = this.unitService.getOwnerUnits(id).subscribe(unit => {
       this.http.jsonp;
       this.unnis = unit;
+      console.log(id + " user in units page");
       this.units = <Unit[]>this.unnis?.body;
-      console.log(this.unnis);
+      console.log(this.units + " recieved units");
     });
   }
 

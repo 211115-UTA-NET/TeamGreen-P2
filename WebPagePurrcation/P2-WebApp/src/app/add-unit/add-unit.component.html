@@ -1,0 +1,28 @@
+<form>
+    <div>
+        Address: <input type = "text" #address>
+    </div>
+    <div>
+        City: <input type = "text" #city>
+    </div>
+    <div>
+        State: <input type = "text" #state>
+    </div>
+    <div>
+        Zip Code: <input type="text" #zip>
+    </div>
+
+    <div>
+        Picture URL: <input type="picture" #picture>
+    </div>
+    <div>
+        Unit Description: <input type="textbox" #description>
+    </div>
+    <div>
+        Price Per Night Per Cat: <input type="text" #price>
+    </div>
+    <div>
+        Max Guest Cats at One Time: <input id = "maxGuests" type="range" name="maxGuests" min="0" max="5" #maxGuests>
+    </div>
+  </form>
+  <button (click) = "submitUnit(address.value, city.value, state.value, zip.value, picture.value, description.value, price.value, maxGuests.value)">Submit</button>

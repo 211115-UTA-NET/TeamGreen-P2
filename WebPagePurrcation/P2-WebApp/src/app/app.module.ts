@@ -16,6 +16,7 @@ import { CommentsComponent } from './comments/comments.component';
 import { FormsModule } from '@angular/forms';
 import { OwnerLoginComponent } from './owner-login/owner-login.component';
 import { OwnerUnitsComponent } from './owner-units/owner-units.component';
+import { AddUnitComponent } from './add-unit/add-unit.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { OwnerUnitsComponent } from './owner-units/owner-units.component';
     DashboardComponent,
     CommentsComponent,
     OwnerLoginComponent,
-    OwnerUnitsComponent
+    OwnerUnitsComponent,
+    AddUnitComponent
   ],
   imports: [
     BrowserModule,

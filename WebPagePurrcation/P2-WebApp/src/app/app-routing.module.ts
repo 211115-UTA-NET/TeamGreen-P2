@@ -9,6 +9,8 @@ import { UnitDetailsComponent } from './unit-details/unit-details.component';
 import { LoginComponent } from './login/login.component';
 import { OwnerLoginComponent } from './owner-login/owner-login.component';
 import { OwnerUnitsComponent } from './owner-units/owner-units.component';
+import { CommentsComponent } from './comments/comments.component';
+import { AddUnitComponent } from './add-unit/add-unit.component';
 
 const routes: Routes = [ 
   { path: 'units', component: UnitsComponent },
@@ -18,7 +20,9 @@ const routes: Routes = [
   { path: 'unit-details/:Unit_ID', component: UnitDetailsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'owner-login', component: OwnerLoginComponent },
-  { path: 'owner-units/:User_ID', component: OwnerUnitsComponent }
+  { path: 'owner-units/:User_ID', component: OwnerUnitsComponent },
+  { path: 'unit-detail/:Unit_ID/comments/', component: CommentsComponent },
+  { path: 'add-unit', component: AddUnitComponent}
   
   
 ];

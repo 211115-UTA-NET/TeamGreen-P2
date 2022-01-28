@@ -1,11 +1,20 @@
 <h2>Browse Comments</h2>
-<button (click)="showComments()">View Units</button>
+<button (click)="showComments()">View Reviews</button>
 <div *ngIf="seeComments; then commentBlock;"></div>
 <ng-template #commentBlock>
   <ul class="comments">
     <li *ngFor = "let comment of comments">
-      <a routerLink = "details/{{comment.Comment_ID}}"></a>
-      <span class = "tile">{{comment.Comment_ID}}</span> {{comment.Content}}, {{comment.Rating}}
+      <span class = "tile">{{comment.Comment_ID}}</span> {{comment.Review}}, {{comment.Rating}} stars, {{comment.RatPost_Date_Timeing}}
     </li>
   </ul>
+  <form>
+    <div id = "review">
+      Leave a Review: <input id="review" #review>
+    </div>
+    <div>
+      Leave a Rating:
+      <input id = "rating" type="range" name="rating" min="0" max="5" #rating>
+    </div>
+    <button (click) = "submitComment(review.value, rating.value)">Submit</button>
+  </form>
 </ng-template>
