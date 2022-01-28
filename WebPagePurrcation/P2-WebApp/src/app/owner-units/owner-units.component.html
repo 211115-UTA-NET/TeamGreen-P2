@@ -23,14 +23,17 @@
     <!--<button (click)="getData()">Fetch Data</button>-->
   </div>
   <div class="forloop" *ngFor="let unit of units" style="text-align:center">
-    <h3 id="">
-      {{ unit.Address }} &nbsp; {{ unit.City }} &nbsp; {{ unit.State }}
-    </h3>
-    <h4 id="price">Cat price per night ${{ unit.Price_Night_Cat }} </h4>
-    <img id="image" width="200" alt="thumbnail" [src]="unit.Photo_URL">
-    <br>
+    
+    
+    
+    
+    
     <a routerLink="/unit-details/{{unit.Unit_ID}}">
-      <button class="button">Select</button>
+      <button class="unitListing"><img id="image" width="200" alt="thumbnail" [src]="unit.Photo_URL"><h3 id="">
+        {{ unit.Address }} &nbsp; {{ unit.City }} &nbsp; {{ unit.State }}
+      </h3>
+      <h4 id="price">Cat price per night ${{ unit.Price_Night_Cat }} </h4>
+    </button>
     </a>
 
   </div>
