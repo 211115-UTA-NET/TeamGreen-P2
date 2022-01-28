@@ -1,4 +1,13 @@
-#unitPic {
-    max-height: 50%;
-    max-width: 50%;
+
+img {
+    max-width: 40%;
+    max-height: 40%;
+    margin:0pt;
+    z-index: -1;
+    float:left;
+    margin:2em;
+}
+.unitDetails {
+    
+    float:left
 }

@@ -11,13 +11,15 @@
 </head>
 
 <body>
-    <h2>{{ unit[0].Address }} &nbsp; {{ unit[0].City }} <br> {{ unit[0].State }} &nbsp; {{ unit[0].Zip_Code }}</h2>
-    <div>
-        <img id="unitPic" [src]="unit[0].Photo_URL">
-    </div>
-    <div id="description"> {{ unit[0].Unit_Desciption }}</div>
+    <img id="unitPic" [src]="unit[0].Photo_URL">
+   
+    <span class="unitDetails">
+    <h2>{{ unit[0].Address }} <br> {{ unit[0].City }} &nbsp; {{ unit[0].State }} &nbsp; {{ unit[0].Zip_Code }}</h2>
+    
+    <h3>Price per night: ${{ unit[0].Price_Night_Cat }}</h3>
+    <div id="description">Description: {{ unit[0].Unit_Desciption }}</div>
     <app-comments></app-comments>
-    <h3>{{ unit[0].Price_Night_Cat }}</h3>
+    </span>
 </body>
 
 </html>
