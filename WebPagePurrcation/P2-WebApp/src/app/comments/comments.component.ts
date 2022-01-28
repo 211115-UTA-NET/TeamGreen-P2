@@ -51,6 +51,7 @@ export class CommentsComponent implements OnInit {
   }
 
   submitComment(info: string): void {
+    console.log("1");
     this.commentService.submitComment(info, this.id);
   }
 

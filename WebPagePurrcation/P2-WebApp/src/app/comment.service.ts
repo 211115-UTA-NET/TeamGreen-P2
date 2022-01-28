@@ -26,6 +26,9 @@ export class CommentService {
   }
 
   submitComment(info: string, id: number) : void {
-    this.http.get<any>(this.submitCommentUrl + info + ":" + id);
+    console.log("2");
+    this.http.get<any>(this.submitCommentUrl + info + ":" + id, {observe: 'response'}).subscribe(response => {
+      console.log(response);
+    });
   }
 }
