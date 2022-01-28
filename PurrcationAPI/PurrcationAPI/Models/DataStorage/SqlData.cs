@@ -23,9 +23,7 @@ namespace PurrcationAPI.Models.DataStorage
 
             using SqlCommand cmd = new(
                 @"SELECT *
-                FROM Photos
-                INNER JOIN Units
-                ON Photos.Unit_ID = Units.Unit_ID",
+                FROM Units",
                 connection);
 
             using SqlDataAdapter adapter = new(cmd);
@@ -67,7 +65,7 @@ namespace PurrcationAPI.Models.DataStorage
             using SqlCommand cmd = new(
                 @"Select *
                 from Units
-                where Owner_ID = @Id",
+                where Unit_ID = @Id",
                 connection);
 
             cmd.Parameters.AddWithValue("@Id", Id);
@@ -100,6 +98,48 @@ namespace PurrcationAPI.Models.DataStorage
             return result;
         }
 
+        public List<Unit> GetOwnerById(string Id)
+        {
+            List<Unit> result = new();
+
+            using SqlConnection connection = new(connectionString);
+            connection.Open();
+
+            using SqlCommand cmd = new(
+                @"Select *
+                from Units
+                where Owner_ID = @Id",
+                connection);
+
+            cmd.Parameters.AddWithValue("@Id", Id);
+
+            using SqlDataAdapter adapter = new(cmd);
+            DataSet dataSet = new();
+            adapter.Fill(dataSet);
+
+            connection.Close();
+
+            foreach (DataRow row in dataSet.Tables[0].Rows)
+            {
+
+                string Unit_Type_ID = row["Unit_Type_ID"].ToString();
+                int Owner_ID = Convert.ToInt32(row["Owner_ID"].ToString());
+                string? Address = row["Address"].ToString();
+                string? City = row["City"].ToString();
+                string? State = row["State"].ToString();
+                string? Unit_Description = row["Unit_Description"].ToString();
+                string? Price_Night_Cat = row["Price_Night_Cat"].ToString();
+                int Zip_Code = Convert.ToInt32(row["Zip_Code"]);
+                int Max_Guests = Convert.ToInt32(row["Max_Guests"]);
+                string? Photo_URL = row["Photo_URL"].ToString();
+
+
+                result.Add(new(Id, Unit_Type_ID, Owner_ID, Address, City, State, Unit_Description, Price_Night_Cat, Zip_Code, Max_Guests, Photo_URL));
+
+            }
+
+            return result;
+        }
 
         public List<Comments> GetCommentsById(string Id)
         {
@@ -143,7 +183,7 @@ namespace PurrcationAPI.Models.DataStorage
         public List<Account> VerifyCredentials(string Email)
         {
             List<Account> result = new();
-            result.Add(new("Not found", "Not found", "Not found", "Not found", "Not found"));
+            result.Add(new("Not found", "Not found", "Not found", "Not found", "Not found", "Not found"));
 
 
             using SqlConnection connection = new(connectionString);
@@ -169,9 +209,10 @@ namespace PurrcationAPI.Models.DataStorage
                     string? Lname = row["Last_Name"].ToString();
                     string? Password = row["Password"].ToString();
                     string? UserType = row["User_Type_ID"].ToString();
+                    string? User_ID = row["User_ID"].ToString();
 
                     //string? Emails = row["Email"].ToString();
-                    result.Add(new(Fname, Lname, Password, Email, UserType));
+                    result.Add(new(Fname, Lname, Password, Email, UserType, User_ID));
 
 
                 }
