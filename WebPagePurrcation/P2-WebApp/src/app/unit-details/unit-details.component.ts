@@ -15,6 +15,7 @@ export class UnitDetailsComponent implements OnInit {
   id: number = 0;
   unit: Unit[] = [];
   unni: HttpResponse<Unit[]> | undefined;
+  submitted: boolean = false;
 
   constructor(private route: ActivatedRoute, private unitService: UnitService, private location: Location, private http: HttpClient) { }
 
@@ -31,6 +32,9 @@ export class UnitDetailsComponent implements OnInit {
       this.unni = unit;
       this.unit = <Unit[]>this.unni.body;
     });
-    
+  }
+
+  submitBooking(): void {
+    this.submitted = true;
   }
 }

@@ -21,5 +21,10 @@
     <app-comments></app-comments>
     </span>
 </body>
+<button (click)="submitBooking()">Submit Booking</button>
+<div *ngIf="submitted; then submitblock;"></div>
+<ng-template #submitblock>
+    Booking Confirmed
+</ng-template>
 
 </html>
