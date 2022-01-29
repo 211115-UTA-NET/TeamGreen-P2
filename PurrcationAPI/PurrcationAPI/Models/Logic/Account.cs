@@ -38,6 +38,16 @@ namespace PurrcationAPI.Models.Logic
 
 
         }
+        public Account(string Fname, string Lname, string Password, string Email, string userType)
+        {
+            this.FirstName = Fname;
+            this.LastName = Lname;
+            this.Password = Password;
+            this.Email = Email;
+            this.userType = userType;
+
+
+        }
         public Account()
         {
         }

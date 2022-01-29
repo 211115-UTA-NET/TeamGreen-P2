@@ -17,7 +17,7 @@ export class AppComponent  {
   
   postData(info: string){
     
-    const url ='https://localhost:7112/signup/?user='+info;
+    const url ='https://localhost:7112/AddComments/?Comments='+info;
     this.http.get(url).subscribe((res)=>{
       this.http.jsonp
       this.data = res

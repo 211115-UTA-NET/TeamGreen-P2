@@ -247,30 +247,33 @@ namespace PurrcationAPI.Models.DataStorage
             myCommand.ExecuteNonQuery();
             connection.Close();
         }
-        public void AddNewUnit(List<Unit> unit)
+        public void AddNewUnit(string Address, string City, string State, string Zip_Code, string Photo_URL, string Unit_Description, string Price_Night_Cat, string Max_Guests, string Owner_ID)
         {
+            string Unit_Type_ID = "2";
             // unit[0].Unit_Type_ID, unit[0].Owner_ID, unit[0].Address, unit[0].City, unit[0].State, unit[0].Zip_Code, unit[0].Unit_Description, unit[0].Price_Night_Cat, unit[0].Max_Guests
             using SqlConnection connection = new(connectionString);
             connection.Open();
-            string query = "INSERT INTO Unit (Unit_Type_ID, Owner_ID, Address,City,State,Unit_Description,Price_Night_Cat,Zip_Code,Max_Guests)";
-            query += " VALUES (@Unit_Type_ID, @Owner_ID, @Address, @City, @State,@Unit_Description,@Price_Night_Cat,@Zip_Code,@Max_Guests)";
+            string query = "INSERT INTO Unit (Unit_Type_ID, Owner_ID, Address,City,State,Unit_Description,Price_Night_Cat,Zip_Code,Max_Guests,Photo_URL)";
+            query += " VALUES (@Unit_Type_ID, @Owner_ID, @Address, @City, @State,@Unit_Description,@Price_Night_Cat,@Zip_Code,@Max_Guests,@Photo_URL)";
 
             SqlCommand myCommand = new SqlCommand(query, connection);
 
-            myCommand.Parameters.AddWithValue("@Unit_Type_ID", unit[0].Unit_Type_ID);
-            myCommand.Parameters.AddWithValue("@Owner_ID", unit[0].Owner_ID);
-            myCommand.Parameters.AddWithValue("@Address", unit[0].Address);
-            myCommand.Parameters.AddWithValue("@City", unit[0].City);
-            myCommand.Parameters.AddWithValue("@State", unit[0].State);
-            myCommand.Parameters.AddWithValue("@Unit_Description", unit[0].Unit_Description);
-            myCommand.Parameters.AddWithValue("@Price_Night_Cat", unit[0].Price_Night_Cat);
-            myCommand.Parameters.AddWithValue("@Zip_Code", unit[0].Zip_Code);
-            myCommand.Parameters.AddWithValue("@Max_Guests", unit[0].Max_Guests);
+            myCommand.Parameters.AddWithValue("@Unit_Type_ID", Unit_Type_ID);
+            myCommand.Parameters.AddWithValue("@Owner_ID", Owner_ID);
+            myCommand.Parameters.AddWithValue("@Address", Address);
+            myCommand.Parameters.AddWithValue("@City", City);
+            myCommand.Parameters.AddWithValue("@State", State);
+            myCommand.Parameters.AddWithValue("@Unit_Description", Unit_Description);
+            myCommand.Parameters.AddWithValue("@Price_Night_Cat", Price_Night_Cat);
+            myCommand.Parameters.AddWithValue("@Zip_Code", Zip_Code);
+            myCommand.Parameters.AddWithValue("@Max_Guests", Max_Guests);
+            myCommand.Parameters.AddWithValue("@Photo_URL", Photo_URL);
+
 
             myCommand.ExecuteNonQuery();
             connection.Close();
         }
-        public void AddComment(List<Comments> comments)
+        public void AddComment(string Review, string Rating, string Unit_id, string Guest_ID, string Post_Date_Time)
         {
             using SqlConnection connection = new(connectionString);
             connection.Open();
@@ -278,11 +281,11 @@ namespace PurrcationAPI.Models.DataStorage
             query += " VALUES (@Unit_ID, @Guest_ID, @Review, @Rating, @Post_Date_Time)";
             SqlCommand myCommand = new SqlCommand(query, connection);
 
-            myCommand.Parameters.AddWithValue("@Unit_ID", comments[0].Unit_ID);
-            myCommand.Parameters.AddWithValue("@Guest_ID", comments[0].Guest_ID);
-            myCommand.Parameters.AddWithValue("@Review", comments[0].Review);
-            myCommand.Parameters.AddWithValue("@Rating", comments[0].Rating);
-            myCommand.Parameters.AddWithValue("@Post_Date_Time", comments[0].getDateTime());
+            myCommand.Parameters.AddWithValue("@Unit_ID", Unit_id);
+            myCommand.Parameters.AddWithValue("@Guest_ID", Guest_ID);
+            myCommand.Parameters.AddWithValue("@Review", Review);
+            myCommand.Parameters.AddWithValue("@Rating", Rating);
+            myCommand.Parameters.AddWithValue("@Post_Date_Time", Post_Date_Time);
             myCommand.ExecuteNonQuery();
             connection.Close();
         }

@@ -153,12 +153,17 @@ namespace PurrcationAPI.Controllers
         [HttpGet("/signup")]
         public async Task<IActionResult> AddUser([FromQuery(Name = "user")] string info)
         {
+
+
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
-            //string t = ok;
-            // Account newUsr = new Account(usr[0].Fname, usr[0].Lname, usr[0].Password, usr[0].Email, usr[0].UserType);
 
-            // SqlData repository = new SqlData(getConnectionString());
-            //  repository.AddNewUser(newUsr);
+            string[] infos = info.Split(":");
+            string Fname =infos[2]; string Lname=infos[3]; string Password=infos[1]; string Email=infos[0]; string userType="1";
+
+            Account newUsr = new Account(Fname, Lname, Password, Email,  userType);
+
+             SqlData repository = new SqlData(getConnectionString());
+              repository.AddNewUser(newUsr);
 
             return new ContentResult()
             {
@@ -168,12 +173,20 @@ namespace PurrcationAPI.Controllers
             };
         }
 
-        [HttpPost("/unit")]
+        [HttpGet("/AddUnit")]
 
-        public async Task<IActionResult> AddUnit(List<Unit> unit)
+        public async Task<IActionResult> AddNewUnit([FromQuery(Name = "unit")] string info)
         {
+
+
+            //string[] infos = info.Split(":");
+            // string address = infos[0]; string city = infos[1]; string state = infos[2]; string zip = infos[3]; string picture = infos[4]; string description = infos[5]; string price = infos[6]; string maxGuests = infos[7]; string id = infos[8];
+
+            string address = "434"; string city = "sfs"; string state = "sfs"; string zip = "sfs"; string picture = "sfs"; string description = "sfs"; string price = "sfs"; string maxGuests = "sfs"; string id = "sfs";
+
             SqlData repository = new SqlData(getConnectionString());
-            repository.AddNewUnit(unit);
+
+            repository.AddNewUnit(address, city, state, zip, picture, description, price, maxGuests, id);
 
             return new ContentResult()
             {
@@ -181,11 +194,20 @@ namespace PurrcationAPI.Controllers
                 ContentType = "application/json"
             };
         }
-        [HttpPost("/AddComments")]
-        public async Task<IActionResult> AddComments(List<Comments> comments)
+        [HttpGet("/AddComments")]
+        public async Task<IActionResult> AddComments([FromQuery(Name = "Comments")] string info)
         {
+
+
+           string Time =  DateTime.Now.ToString("HH:mm:ss tt");
+
+
+            string[] infos = info.Split(":");
+            string review = infos[0]; string rating = infos[1]; string unit_id = infos[2]; string Guest_ID = "1" ;
+
             SqlData repository = new SqlData(getConnectionString());
-            repository.AddComment(comments);
+          
+            repository.AddComment(review, rating, unit_id, Guest_ID, Time);
 
             return new ContentResult()
             {
