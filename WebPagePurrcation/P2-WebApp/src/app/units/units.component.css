@@ -1,0 +1,39 @@
+
+button.unitListing {
+    margin: 15px;
+    position: relative;
+    top: 0;
+    left: 0;
+    transition: top 0.05s, left 0.05s;
+    border-radius: 10px;
+    background-color: ghostwhite;
+    width:80%;
+    height: 300px;
+    float:right;
+}
+button.unitListing:hover {
+    left: -2px;
+    top: -2px;
+    box-shadow: 3px 2.5px 0px rgb(48, 47, 51);
+}
+button.unitListing:active{
+    filter: saturate(50%);
+}
+
+#username:focus {
+    border-width: 1px;
+}
+
+.unitListing img{
+    float: left;
+    max-width: 80%;
+    max-height: 80%;
+}
+
+/* #price {
+    
+}
+
+.unitDescription{
+
+} */

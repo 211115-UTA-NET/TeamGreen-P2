@@ -13,6 +13,7 @@ export class UnitService {
   private unitsUrl = 'https://purrcationapi.azurewebsites.net/getallunits';
   private unitIdUrl = 'https://purrcationapi.azurewebsites.net/GetUnitById/';
   private ownerUnitsUrl = 'https://purrcationapi.azurewebsites.net/GetOwnerUnitById/';
+  private submitUnitUrl = 'https://purrcationapi.azurewebsites.net/AddUnit/?unit=';
   unnis: HttpResponse<Unit[]> | undefined;
   units: Unit[] | null | undefined;
   unit: Unit | undefined;
@@ -32,8 +33,8 @@ export class UnitService {
   }
 
   /** PUT: update the hero on the server */
-  submitUnit(address: string, city: string, state: string, zip: string, pictureUrl: string, description: string, price: number, maxGuests: number): void {
-    this.http.post(this.unitsUrl, {Address: address, State: state, City: city, ZipCode: zip, PictureURL: pictureUrl, Description: description, Price: price, MaxGuests: maxGuests}, this.httpOptions);
+  submitUnit(info: string): Observable<HttpResponse<any>> {
+    return this.http.get<any>(this.submitUnitUrl+info, {observe: 'response'});
   }
 
   getOwnerUnits(id: number): Observable<HttpResponse<Unit[]>> {

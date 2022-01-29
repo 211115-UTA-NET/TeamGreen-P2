@@ -50,10 +50,9 @@ export class CommentsComponent implements OnInit {
     this.seeComments = true;
   }
 
-  submitComment(review: string, rating: string): void {
-    let num = <unknown>rating;
-    let numb = <number>num;
-    this.commentService.submitComment(review, numb, this.id);
+  submitComment(info: string): void {
+    console.log("1");
+    this.commentService.submitComment(info, this.id);
   }
 
   

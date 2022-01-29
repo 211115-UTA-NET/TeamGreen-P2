@@ -1,2 +1,38 @@
-<p>unit-details works!</p>
-<app-comments></app-comments>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Unit Details</title>
+    <link href="./unit-details.component.css" rel="stylesheet" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../FaviconCat/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../FaviconCat/favicon-16x16.png">
+    <link rel="manifest" href="../../../../FaviconCat/site.webmanifest">
+</head>
+
+<body>
+    <img id="unitPic" [src]="unit[0].Photo_URL">
+   
+    <span class="unitDetails">
+    <h2>{{ unit[0].Address }} <br> {{ unit[0].City }} &nbsp; {{ unit[0].State }} &nbsp; {{ unit[0].Zip_Code }}</h2>
+    
+    <h3>Price per night: ${{ unit[0].Price_Night_Cat }}</h3>
+    <div id="description">Description: {{ unit[0].Unit_Desciption }}</div>
+    <app-comments></app-comments>
+    <br><br>
+    <form action="action_page.php">
+        <label for="checkInDate">Check-In Date: </label>
+        <input type="date" id="checkInDate">
+        <label for="checkOutDate">Check-Out Date:</label>
+        <input type="date" id="checkOutDate">
+    </form>
+    <button (click)="submitBooking()">Submit Booking</button>
+<div *ngIf="submitted; then submitblock;"></div>
+<ng-template #submitblock>
+    Booking Confirmed
+</ng-template>
+    </span>
+</body>
+
+
+</html>
