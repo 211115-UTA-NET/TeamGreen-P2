@@ -27,4 +27,4 @@ This application is designed for users to either connect with an overnight cat s
 - If you want to run the API locally, download the API, enter the API folder in the terminal, and use the "dotnet run" command. Then follow the above UI intrustions.
 
 # Contributors
-- Samantha Roderick, Osaretin , Megan Postlewait
+- Samantha Roderick, Osaretin Iyen , Megan Postlewait
