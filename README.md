@@ -33,4 +33,4 @@ This application is designed for users to either connect with an overnight cat s
 - use the "ng serve --open" command
 
 # Contributors
-- Samantha Roderick, Osaretin Iyen , Megan Postlewait
+- Samantha Roderick, Osaretin Iyen, Megan Postlewait
