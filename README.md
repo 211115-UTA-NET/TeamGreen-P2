@@ -22,15 +22,15 @@ This application is designed for users to either connect with an overnight cat s
 
 # Getting Started
 
--Use windows, linux, or mac
--Clone or download this repo
--Install .NET 6.0 and up
--Open your CLI terminal
--Change path to the PurrcationAPI folder
--Use the "dotnet run" command
--Open another CLI terminal
--Change path to WebPagePurrcation/P2-WebApp
--use the "ng serve --open" command
+- Use windows, linux, or mac
+- Clone or download this repo
+- Install .NET 6.0 and up
+- Open your CLI terminal
+- Change path to the PurrcationAPI folder
+- Use the "dotnet run" command
+- Open another CLI terminal
+- Change path to WebPagePurrcation/P2-WebApp
+- use the "ng serve --open" command
 
 # Contributors
 - Samantha Roderick, Osaretin Iyen , Megan Postlewait
