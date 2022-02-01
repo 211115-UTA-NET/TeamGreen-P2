@@ -8,10 +8,10 @@ This application is designed for users to either connect with an overnight cat s
 - ADO.NET
 - C#
 - Azure Web Services
+- ASP.NET Core web API
 - SQL Server
-- SQL Server Managment Studio
 - RESTful API
-- HTTP
+- REST
 - Angular 2+
 
 # Features
