@@ -17,7 +17,7 @@ Angular 2+
 # Features
 
 
-# set up
+# Set Up
 If you use the already deployed on Azure API, then you just need to download the UI. Enter the folder and run "ng serve --open" in the terminal.
 If you want to run the API locally then download the API and enter the API folder and run "dotnet run." Then follow the UI intrustions from above.
 
